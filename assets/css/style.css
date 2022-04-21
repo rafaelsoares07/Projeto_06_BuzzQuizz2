@@ -177,6 +177,7 @@ margin-top:50px;
     font-weight: 700;
     display: flex;
     justify-content: center;
+    
 }
 
 .infos-basicas{
@@ -216,13 +217,30 @@ margin-top:50px;
 }
 
 /*CSS da TELA 3.3 (NÍVEIS)*/
-
 .titulo-niveis{
     font-size: 23px;
     font-weight: 700;
     display: flex;
     justify-content: center;
     margin-top: 15px;
+}
+
+.perguntas-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 5px auto 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .titulo-perguntas {
+    font-size: 23px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 15px;
 }
 .form-infos-niveis{
     margin: 0 auto;
@@ -249,3 +267,80 @@ input .descricao-nivel{
     height: 500px;
 }
 
+
+  
+  .collapsible {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    max-width: 600px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 20px 0;
+  }
+  
+  .collapsible ion-icon {
+    content: "\002B";
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    font-size: 26px;
+  }
+  
+  .collapsible ion-icon:hover {
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+  
+  .subtitulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0 15px;
+  }
+  
+  form {
+    margin-top: 10px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 9px;
+  }
+  
+  .botao-prosseguir-perguntas {
+    border: none;
+    border-radius: 15px;
+    width: 340px;
+    height: 54px;
+    color: #fff5f4;
+    background-color: #ec362d;
+    font-size: 21px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .botao-prosseguir-perguntas:hover {
+    background-color: #aa311e;
+    color: lightgray;
+    cursor: pointer;
+  }
+  
