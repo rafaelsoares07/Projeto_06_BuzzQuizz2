@@ -1,33 +1,52 @@
-//Variaveis Globais 
+//Tela 3.1 do layout (informacoes basicas)
 let titulo
 let numPerguntas
 let numNiveis
 let urlBanner
 
-//Eventos
-//EVENTOS DE CLICK
-
-function openForm(){
-    document.querySelector('.form-create-quizz').style.display = 'block'
+function callRenderizarFormsInfosBasicas(){
+    let body = document.querySelector('body')
+    body.innerHTML= ''
+    body.innerHTML = renderizarFormInfosBasicas()
+    
 }
-
+function renderizarFormInfosBasicas(){
+    return ` 
+    <div class="form-create-quizz">
+        <div class=infos-basicas>
+            <div class="header">
+                <h1>BuzzQuizz</h1>
+            </div>
+            <div class="form-infos-basicas">
+                 <p class="titulo">Comece pelo começo</p> 
+                 <input id="titulo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65" value="jajajajajajajajajajajajajajajajajajaj">
+                 <input id="url-image-principal" type="text" placeholder="URl da imagem do seu quizz" required value="kdoaksodk">
+                 <input id="quantidadePerguntas" type="number" placeholder="Quantidade de perguntas do quizz" required min="3" value="7">
+                 <input id="quantidadeNiveis" type="number" placeholder="Quantidade de níveis do quizz" required min="2" value="12">  
+                 <button onclick="validaçãoFormInfosBasicas()">Prosseguir para criar perguntas</button>    
+            </div>
+    </div>`
+}
 
 function validaçãoFormInfosBasicas(){
     
     numPerguntas = document.querySelector('#quantidadePerguntas').value 
     numNiveis = document.querySelector('#quantidadeNiveis').value 
     titulo = document.querySelector('#titulo-quizz').value
+    urlBanner = document.querySelector('#url-image-principal').value
     
     let numPerguntasTrue = numPerguntas>=3
     let numNiveisTrue = numNiveis>=2
     let tituloTrue = titulo.length >=20
 
+
     //console.log(tituloTrue)
     //console.log(numPerguntasTrue)
-    //console.log(numNiveisTrue)
+    console.log(urlBanner)
     
     if(numNiveisTrue&& numPerguntasTrue && tituloTrue){
-    
+            console.log('chamou')
+            callRendezizarFormNivelQuizz()
        }
 
     else{
@@ -43,6 +62,85 @@ function validaçãoFormInfosBasicas(){
 
 }
 
+
+//Tela 3.3 do layout (niveis do quizz)
+let tituloNivel = []
+let porcentagemAcertos= []
+let urlNivel = []
+let descricaoNivel =[]
+let objetoLevels = []
+
+function callRendezizarFormNivelQuizz(){
+    let body = document.querySelector('body')
+    body.innerHTML= ''
+    body.innerHTML = renderizarFormNivelQuizz()
+}
+function renderizarFormNivelQuizz(){
+    let elemento =''
+
+    for(let i=0; i<numNiveis; i++){
+        
+        elemento= elemento+`
+        <div class="container-niveis">
+        <label> Nivel ${i+1}</label>
+        <div class='caixa-nivel' onclick="visualizar(this)">
+        <input class="titulo-nivel" type="text" placeholder="Título do Nível" required minlength="10" >
+        <input class="porcentagem-acertos" type="text" placeholder="% de acertos" required>
+        <input class="url-nivel" type="text" placeholder="URL da imagem do nível" required min="3">
+        <input class="descricao-nivel" type="text" placeholder="Descrição do nível" required min="2">  
+        </div>
+        </div>
+        `
+    }
+
+
+    return ` 
+    <div class="form-create-quizz">
+        <div class=form-infos-niveis>
+            <div class="header">
+                <h1>BuzzQuizz</h1>
+            </div>
+            <div class="form-niveis">
+                 <p class="titulo-niveis">Agora decida os níveis!</p> 
+                ${elemento}
+                <button onclick="validaçãoFormNivelQuizz()">Finalizar Quizz</button>
+            </div>
+    </div>`
+}
+function validaçãoFormNivelQuizz(){
+
+    let tituloN= document.querySelectorAll('.titulo-nivel')
+    for(let i= 0; i<numNiveis ; i++){
+        tituloNivel[i]= tituloN[i].value
+    }
+    
+    let percentage = document.querySelectorAll('.porcentagem-acertos')
+    for(let i= 0; i<numNiveis ; i++){
+        porcentagemAcertos[i]= percentage[i].value
+    }
+
+    let url = document.querySelectorAll('.url-nivel')
+    for(let i= 0; i<numNiveis ; i++){
+        urlNivel[i]= url[i].value
+    }
+
+    let description = document.querySelectorAll('.descricao-nivel')
+    for(let i= 0; i<numNiveis ; i++){
+        descricaoNivel[i]= description[i].value
+    }
+
+   for(let i=0 ; i<numNiveis; i++){
+    objetoLevels[i] = {
+        title:tituloNivel[i],
+        image:urlNivel[i],
+        text:descricaoNivel[i],
+        minValue: porcentagemAcertos
+    }
+   }
+    
+   formatarObjetoQuizz()
+    
+}
 
 
 
@@ -91,8 +189,8 @@ function getQuizzForID(){
 function formatarObjetoQuizz(){
     
     const objeto = {
-        title: prompt('titulo'),
-        image: prompt('imagem banner'),
+        title: titulo,
+        image: urlBanner,
         questions: [
             {
                 title: prompt('pergunta 1'),
@@ -143,22 +241,10 @@ function formatarObjetoQuizz(){
                 ]
             }
         ],
-        levels: [
-            {
-                title: prompt('level'),
-                image: prompt('image'),
-                text: prompt('descricao'),
-                minValue: 0
-            },
-            {
-                title: prompt('level'),
-                image: prompt('image'),
-                text: prompt('descricao'),
-                minValue: 50
-            }
-        ]
+        levels: objetoLevels
     }
 
+    console.log(objeto)
     return objeto
 }
 

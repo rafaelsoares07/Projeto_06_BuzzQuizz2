@@ -163,17 +163,12 @@ margin-top:50px;
 
 /* @media () {} */
 
-/* Formulario para criacao de novos quizzes*/
+/* CSS da TELA 3.1 (INFOS BASICAS)*/
 
-.form-create-quizz{
-    position: fixed;
+.form-create-quizz{   
     width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    min-height: 100vh;
     background-color: #E5E5E5;
-    display: none;
     
 }
 
@@ -202,6 +197,7 @@ margin-top:50px;
 
 }
 
+
 .form-create-quizz input{
     width: 564px;
     height: 46px;
@@ -217,5 +213,39 @@ margin-top:50px;
     background-color:#EC362D;
     font-size: 21px;
     margin: 0 auto;
+}
+
+/*CSS da TELA 3.3 (NÍVEIS)*/
+
+.titulo-niveis{
+    font-size: 23px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.form-infos-niveis{
+    margin: 0 auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+.form-infos-niveis input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.form-niveis{   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc(100% + 300px);
+    border: 1px solid red;
+}
+input .descricao-nivel{
+    height: 500px;
 }
 
