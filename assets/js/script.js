@@ -21,15 +21,15 @@ function validaçãoFormInfosBasicas(){
     let numPerguntasTrue = numPerguntas>=3
     let numNiveisTrue = numNiveis>=2
     let tituloTrue = titulo.length >=20
-
+    
     //console.log(tituloTrue)
     //console.log(numPerguntasTrue)
     //console.log(numNiveisTrue)
     
     if(numNiveisTrue&& numPerguntasTrue && tituloTrue){
+        
+    }
     
-       }
-
     else{
         alert(`
         Validações:\n
@@ -53,9 +53,6 @@ function validaçãoFormInfosBasicas(){
 
 
 
-
-
-
 //URL BASE para fazer post e get, podemos só ir concatenando que nem o professor
 //const API = "https://mock-api.driven.com.br/api/v3/buzzquizz/quizzes"
 
@@ -63,11 +60,11 @@ function validaçãoFormInfosBasicas(){
 //Pega lista de TODOS os quizzes da API
 function getQuizzes(){
     let promisse = axios.get(`${API}`)
-
+    
     promisse.then(response =>{
         console.log(response.data)
     })
-
+    
     promisse.catch(error => console.log(error))
 }
 
@@ -76,11 +73,11 @@ function getQuizzes(){
 function getQuizzForID(){
     let id = 1200
     let promisse = axios.get(`${API}/${id}`)
-
+    
     promisse.then(response =>{
         console.log(response.data)
     })
-
+    
 }
 
 
@@ -158,7 +155,7 @@ function formatarObjetoQuizz(){
             }
         ]
     }
-
+    
     return objeto
 }
 
@@ -169,12 +166,12 @@ function formatarObjetoQuizz(){
 //entradas do usuario e criar o nosso objeto
 function createQuizz(){
     let promisse = axios.post(`${API}`,formatarObjetoQuizz()) 
-
+    
     promisse.then(response =>{
         
         console.log(response.data)
     })
-
+    
     promisse.catch(error => alert('Você não preencheu todos os campos para criar o objeto corretamente'))
 }
 
@@ -184,3 +181,124 @@ function createQuizz(){
 //getQuizzForID()
 //createQuizz()
 
+
+//renderiza a pág 9 no figma - Tela de criação das perguntas do quizz  
+function renderQuestionsPage() {
+    const questionsPage = document.querySelector(".create-questions-page");
+    questionsPage.innerHTML += 
+    `
+    <div class="questions-container">
+    <p class="titulo">Crie suas perguntas</span>
+    
+    <div class="form-container">
+    <div class="subtitulo-botao-container">
+    <span class="subtitulo">Pergunta 1</span>
+    <span class="toggle">
+    <ion-icon name="create-outline"></ion-icon>
+    </span>
+    </div>
+    
+    <input
+    id="pergunta"
+    type="text"
+    placeholder="Texto da página"
+    required
+    minlength="20"
+    />
+    <input
+    id="cor-de-fundo"
+    type="text"
+    placeholder="Cor de fundo da pergunta"
+    pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+    required
+    />
+    
+    <span class="subtitulo">Resposta Correta</span>
+    <input
+    id="resposta-correta"
+    type="text"
+    placeholder="Resposta correta"
+    required
+    />
+    <input
+    id="url-imagem-resposta"
+    type="url"
+    placeholder="URL da imagem"
+    pattern="https://.*"
+    size="30"
+    required
+    />
+    
+    <span class="subtitulo">Respostas Incorretas</span>
+    <input
+    id="resposta-incorreta-1"
+    type="text"
+    placeholder="Resposta incorreta 1"
+    required
+    />
+    <input
+    id="url-imagem-1"
+    type="url"
+    placeholder="URL da imagem 1"
+    pattern="https://.*"
+    size="30"
+    required
+    />
+    
+    <input
+    id="resposta-incorreta-2"
+    type="text"
+    placeholder="Resposta incorreta 2"
+    />
+    <input id="url-imagem-2" type="url" placeholder="URL da imagem 3"
+    pattern="https://.*" size="30"/>
+    
+    <input
+    id="resposta-incorreta-3"
+    type="text"
+    placeholder="Resposta incorreta 3"
+    />
+    <input
+    id="url-imagem-3"
+    type="url"
+    placeholder="URL da imagem 3"
+    pattern="https://.*"
+    size="30"
+    />
+    </div>
+    
+    <div class="collapsible-form ">
+    <div class="subtitulo-botao-container">
+    <span class="subtitulo">Pergunta 2</span>
+    
+    <span class="toggle">
+    <ion-icon name="create-outline"></ion-icon>
+    </span>
+    </div>
+    </div>
+    
+    <div class="collapsible-form >
+    <div class="subtitulo-botao-container">
+    <span class="subtitulo">Pergunta 3</span>
+    
+    <span class="toggle">
+    <ion-icon name="create-outline"></ion-icon>
+    </span>
+    </div>
+    </div>
+    </div>
+    `
+}
+
+/*Função que verifica se os números inseridos são hexadeciais de cor -> testar se o input não funcionar
+function isHexColor (hex) {
+    return typeof hex === 'string'
+    && hex.length === 6
+    && !isNaN(Number('0x' + hex))
+} 
+
+Função que verifica se a URL inserida é válida -> testar se o input não funcionar
+function isValidURL(string) {
+    let res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    return (res !== null)
+}; */

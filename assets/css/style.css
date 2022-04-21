@@ -219,3 +219,53 @@ margin-top:50px;
     margin: 0 auto;
 }
 
+/* Formulário da página de perguntas do quizz */
+
+.questions-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 100px auto 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .subtitulo-botao-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 20px;
+    width: 100%;
+  }
+  
+  .subtitulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(3, 3, 3, 0.05);
+    padding: 16px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 9px;
+  }
+  
+  .collapsible-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
+    padding: 16px;
+    margin: 20px 0;
+  }
+

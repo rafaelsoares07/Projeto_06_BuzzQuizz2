@@ -7,128 +7,129 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BuzzQuizz</title>
         <link rel="icon" type="image/x-icon"
-                href="https://res.cloudinary.com/buzzfeed-brasil/image/upload/v1616076942/temporary/BuzzFeed-symbol-YT_ropfjt.png">
+        href="https://res.cloudinary.com/buzzfeed-brasil/image/upload/v1616076942/temporary/BuzzFeed-symbol-YT_ropfjt.png">
         <link rel="stylesheet" href="assets/css/reset.css">
         <link rel="stylesheet" href="assets/css/style.css">
-
+        
 </head>
 
 <body>
         <header>
                 <h1>BuzzQuizz</h1>
         </header>
-
-         <!--Telas do formulário para a criação de um quizz do usuário-->
-         <div class="form-create-quizz">
+        
+        <!--Telas do formulário para a criação de um quizz do usuário-->
+        <div class="form-create-quizz">
                 <div class=infos-basicas>
                         <div class="header">
                                 <h1>BuzzQuizz</h1>
                         </div>
                         <div class="form-infos-basicas">
-                                 <p class="titulo">Comece pelo começo</p> 
-                                 <input id="titulo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65">
-                                 <input id="url-image-principal" type="text" placeholder="URl da imagem do seu quizz" required>
-                                 <input id="quantidadePerguntas" type="number" placeholder="Quantidade de perguntas do quizz" required min="3">
-                                 <input id="quantidadeNiveis" type="number" placeholder="Quantidade de níveis do quizz" required min="2">  
-                                 <button onclick="validaçãoFormInfosBasicas()">Prosseguir para criar perguntas</button>    
+                                <p class="titulo">Comece pelo começo</p> 
+                                <input id="titulo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65">
+                                <input id="url-image-principal" type="text" placeholder="URl da imagem do seu quizz" required>
+                                <input id="quantidadePerguntas" type="number" placeholder="Quantidade de perguntas do quizz" required min="3">
+                                <input id="quantidadeNiveis" type="number" placeholder="Quantidade de níveis do quizz" required min="2">  
+                                <button onclick="validaçãoFormInfosBasicas()">Prosseguir para criar perguntas</button>    
                         </div>
                 </div>
-
-
+                
+                
         </div>
-
-        <main class="main-page "> <!--(pág 1 e 2 no figma) adicionar classe hidden para fazer transição de página-->
+        
+        <!--(pág 9 no figma) Tela de criação das perguntas do quizz -->
+        <section class="create-questions-page"> 
+        </section> 
+        
+        <main class="main-page"> <!--(pág 1 e 2 no figma) adicionar classe hidden para fazer transição de página-->
                 <div class="create-quizz-container"> <!--esconder quando o usuário já tiver criado pelo menos 1 quizz-->
                         <h2>Você não criou nenhum quizz ainda :(</h2>
                         <div class="create-quizz-button">
                                 <p onclick="openForm()">Criar Quizz</p>
                         </div>
                 </div>
-
+                
                 <div class="your-quizzes"> <!--tirar a classe hidden para mostrar os quizzes que o usuário já fez-->
                         <span class="your-quizzes-title">
                                 <h3>Seus Quizzes</h3>
                                 <ion-icon name="add-circle"></ion-icon>
                         </span>
-
+                        
                         <ul class="quizz-container">
-
+                                
                                 <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
                                 </li>
-
+                                
                                 <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
-                                </li>
-                                <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
                                 </li>
                                 <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
                                 </li>
                                 <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
                                 </li>
                                 <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
-                                                amor!</span><img
-                                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                                alt="quizz img" />
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
+                                </li>
+                                <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu
+                                        amor!</span><img
+                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                        alt="quizz img" />
                                 </li>
                         </ul>
                 </div>
-
+                
                 <h3>Todos os quizzes</h3>
                 <ul class="quizz-container">
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                         <li class="quizz"><span>Acerte os personagens corretos dos Simpsons e prove seu amor!</span><img
-                                        src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
-                                        alt="quizz img" />
+                                src="https://lumiere-a.akamaihd.net/v1/images/original_1628718691_los-simpson---star_-_3_e73a2761.jpeg?region=0,379,1300,732"
+                                alt="quizz img" />
                         </li>
-
+                        
                 </ul>
-
-
-          
                 
                 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
                 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
                 <script src="assets/js/script.js"></script>
-</body>
-
-</html>
+        </body>
+        
+        </html>
