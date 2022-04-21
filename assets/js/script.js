@@ -162,6 +162,25 @@ function formatarObjetoQuizz(){
 //Faz o post do objeto criado (quizz do usuário)
 //Coloquei o objeto que tava lá no notion e está dando certo com ele, agora é so pegar as 
 //entradas do usuario e criar o nosso objeto
+
+function createQuizz(){
+    let promisse = axios.post(`${API}`,formatarObjetoQuizz()) 
+
+    promisse.then(response =>{
+
+        console.log(response.data)
+    })
+
+    promisse.catch(error => alert('Você não preencheu todos os campos para criar o objeto corretamente'))
+}
+
+
+
+//getQuizzes()
+//getQuizzForID()
+//createQuizz()
+
+//renderiza a pág 9 no figma - Tela de criação das perguntas do quizz  
 function renderQuestionsPage() {
     const questionsPage = document.querySelector(".create-questions-page");
     questionsPage.innerHTML += `
