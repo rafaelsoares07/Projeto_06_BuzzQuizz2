@@ -221,52 +221,73 @@ margin-top:50px;
 
 /* Formulário da página de perguntas do quizz */
 
-.titulo-perguntas {
+.perguntas-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 5px auto 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .titulo-perguntas {
     font-size: 23px;
     font-weight: 700;
     display: flex;
     justify-content: center;
+    margin-top: 100px;
     margin-bottom: 15px;
   }
-  .questions-container {
+  
+  .collapsible {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
+    cursor: pointer;
+    padding: 18px;
     width: 100%;
     max-width: 600px;
-    margin: 100px auto 20px;
-    display: flex;
-    flex-direction: column;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 20px 0;
   }
   
-  .subtitulo-botao-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    font-size: 20px;
-    width: 100%;
-  }
-  .subtitulo-botao-container ion-icon {
+  .collapsible ion-icon {
+    content: "\002B";
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
     font-size: 26px;
   }
-  .subtitulo-botao-container ion-icon:hover {
+  
+  .collapsible ion-icon:hover {
     color: gray;
     cursor: pointer;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
   }
   
   .subtitulo {
     font-size: 20px;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 15px 0 15px;
   }
   
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
-    padding: 16px;
+  form {
+    margin-top: 10px;
   }
   
-  .form-container input {
+  form input {
     width: 100%;
     padding: 12px;
     border: 1px solid #d1d1d1;
@@ -274,15 +295,7 @@ margin-top:50px;
     margin-bottom: 9px;
   }
   
-  .collapsable-form {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
-    padding: 16px;
-    margin: 20px 0;
-  }
-  .questions-container button {
+  .botao-prosseguir-perguntas {
     border: none;
     border-radius: 15px;
     width: 340px;
@@ -291,8 +304,11 @@ margin-top:50px;
     background-color: #ec362d;
     font-size: 21px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .questions-container button:hover {
+  .botao-prosseguir-perguntas:hover {
     background-color: #aa311e;
     color: lightgray;
     cursor: pointer;
