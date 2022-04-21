@@ -274,7 +274,7 @@ margin-top:50px;
     margin-bottom: 9px;
   }
   
-  .expandible-form {
+  .collapsable-form {
     display: flex;
     flex-direction: column;
     background-color: #fff;
