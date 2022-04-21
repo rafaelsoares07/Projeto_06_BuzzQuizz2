@@ -221,7 +221,14 @@ margin-top:50px;
 
 /* Formulário da página de perguntas do quizz */
 
-.questions-container {
+.titulo-perguntas {
+    font-size: 23px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .questions-container {
     width: 100%;
     max-width: 600px;
     margin: 100px auto 20px;
@@ -237,6 +244,13 @@ margin-top:50px;
     font-size: 20px;
     width: 100%;
   }
+  .subtitulo-botao-container ion-icon {
+    font-size: 26px;
+  }
+  .subtitulo-botao-container ion-icon:hover {
+    color: gray;
+    cursor: pointer;
+  }
   
   .subtitulo {
     font-size: 20px;
@@ -248,11 +262,11 @@ margin-top:50px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(3, 3, 3, 0.05);
+    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
     padding: 16px;
   }
   
-  input {
+  .form-container input {
     width: 100%;
     padding: 12px;
     border: 1px solid #d1d1d1;
@@ -260,12 +274,27 @@ margin-top:50px;
     margin-bottom: 9px;
   }
   
-  .collapsible-form {
+  .expandible-form {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
+    box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
     padding: 16px;
     margin: 20px 0;
   }
-
+  .questions-container button {
+    border: none;
+    border-radius: 15px;
+    width: 340px;
+    height: 54px;
+    color: #fff5f4;
+    background-color: #ec362d;
+    font-size: 21px;
+    margin: 0 auto;
+  }
+  .questions-container button:hover {
+    background-color: #aa311e;
+    color: lightgray;
+    cursor: pointer;
+  }
+  

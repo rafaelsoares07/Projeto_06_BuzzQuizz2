@@ -286,7 +286,12 @@ function renderQuestionsPage() {
     </span>
     </div>
     </div>
+
+    <button>Prosseguir para criar níveis</button>
+
     </div>
+
+    
     `
 }
 
