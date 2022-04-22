@@ -1,17 +1,16 @@
 //Tela 3.1 do layout (informacoes basicas)
-let titulo
-let numPerguntas
-let numNiveis
-let urlBanner
+let titulo;
+let numPerguntas;
+let numNiveis;
+let urlBanner;
 
-function callRenderizarFormsInfosBasicas(){
-    let body = document.querySelector('body')
-    body.innerHTML= ''
-    body.innerHTML = renderizarFormInfosBasicas()
-    
+function callRenderizarFormsInfosBasicas() {
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  body.innerHTML = renderizarFormInfosBasicas();
 }
-function renderizarFormInfosBasicas(){
-    return ` 
+function renderizarFormInfosBasicas() {
+  return ` 
     <div class="form-create-quizz">
         <div class=infos-basicas>
             <div class="header">
@@ -25,64 +24,57 @@ function renderizarFormInfosBasicas(){
                  <input id="quantidadeNiveis" type="number" placeholder="Quantidade de níveis do quizz" required min="2" value="12">  
                  <button onclick="validaçãoFormInfosBasicas()">Prosseguir para criar perguntas</button>    
             </div>
-    </div>`
+    </div>`;
 }
 
-function validaçãoFormInfosBasicas(){
-    
-    numPerguntas = document.querySelector('#quantidadePerguntas').value 
-    numNiveis = document.querySelector('#quantidadeNiveis').value 
-    titulo = document.querySelector('#titulo-quizz').value
-    urlBanner = document.querySelector('#url-image-principal').value
-    
-    let numPerguntasTrue = numPerguntas>=3
-    let numNiveisTrue = numNiveis>=2
-    let tituloTrue = titulo.length >=20
+function validaçãoFormInfosBasicas() {
+  numPerguntas = document.querySelector("#quantidadePerguntas").value;
+  numNiveis = document.querySelector("#quantidadeNiveis").value;
+  titulo = document.querySelector("#titulo-quizz").value;
+  urlBanner = document.querySelector("#url-image-principal").value;
 
+  let numPerguntasTrue = numPerguntas >= 3;
+  let numNiveisTrue = numNiveis >= 2;
+  let tituloTrue = titulo.length >= 20;
 
-    //console.log(tituloTrue)
-    //console.log(numPerguntasTrue)
-    console.log(urlBanner)
-    
-    if(numNiveisTrue&& numPerguntasTrue && tituloTrue){
-            console.log('chamou')
-            renderQuestionsPage()
-       }
+  //console.log(tituloTrue)
+  //console.log(numPerguntasTrue)
+  console.log(urlBanner);
 
-    else{
-        alert(`
+  if (numNiveisTrue && numPerguntasTrue && tituloTrue) {
+    console.log("chamou");
+    callQuestionsPage();
+  } else {
+    alert(`
         Validações:\n
         Minimo de perguntas = 3 \n 
         Minimo de Niveis = 2\n
         Titulo precisa ter pelo menos 20 caracteres \n
-        URL precisa ser de uma imagem valida`)
-    }
-    
-    
-    
+        URL precisa ser de uma imagem valida`);
+  }
 }
-
 
 //Tela 3.3 do layout (niveis do quizz)
-let tituloNivel = []
-let porcentagemAcertos= []
-let urlNivel = []
-let descricaoNivel =[]
-let objetoLevels = []
+let tituloNivel = [];
+let porcentagemAcertos = [];
+let urlNivel = [];
+let descricaoNivel = [];
+let objetoLevels = [];
 
-function callRendezizarFormNivelQuizz(){
-    let body = document.querySelector('body')
-    body.innerHTML= ''
-    body.innerHTML = renderizarFormNivelQuizz()
+function callRendezizarFormNivelQuizz() {
+  let body = document.querySelector("body");
+  body.innerHTML = "";
+  body.innerHTML = renderizarFormNivelQuizz();
 }
-function renderizarFormNivelQuizz(){
-    let elemento =''
+function renderizarFormNivelQuizz() {
+  let elemento = "";
 
-    for(let i=0; i<numNiveis; i++){
-        
-        elemento= elemento+`
+  for (let i = 0; i < numNiveis; i++) {
+    elemento =
+      elemento +
+      `
         <div class="container-niveis">
-        <label> Nivel ${i+1}</label>
+        <label> Nivel ${i + 1}</label>
         <div class='caixa-nivel' onclick="visualizar(this)">
         <input class="titulo-nivel" type="text" placeholder="Título do Nível" required minlength="10" >
         <input class="porcentagem-acertos" type="text" placeholder="% de acertos" required>
@@ -90,11 +82,10 @@ function renderizarFormNivelQuizz(){
         <input class="descricao-nivel" type="text" placeholder="Descrição do nível" required min="2">  
         </div>
         </div>
-        `
-    }
+        `;
+  }
 
-
-    return ` 
+  return ` 
     <div class="form-create-quizz">
         <div class=form-infos-niveis>
             <div class="header">
@@ -105,281 +96,186 @@ function renderizarFormNivelQuizz(){
                 ${elemento}
                 <button onclick="validaçãoFormNivelQuizz()">Finalizar Quizz</button>
             </div>
-    </div>`
+    </div>`;
 }
-function validaçãoFormNivelQuizz(){
+function validaçãoFormNivelQuizz() {
+  let tituloN = document.querySelectorAll(".titulo-nivel");
+  for (let i = 0; i < numNiveis; i++) {
+    tituloNivel[i] = tituloN[i].value;
+  }
 
-    let tituloN= document.querySelectorAll('.titulo-nivel')
-    for(let i= 0; i<numNiveis ; i++){
-        tituloNivel[i]= tituloN[i].value
-    }
-    
-    let percentage = document.querySelectorAll('.porcentagem-acertos')
-    for(let i= 0; i<numNiveis ; i++){
-        porcentagemAcertos[i]= percentage[i].value
-    }
+  let percentage = document.querySelectorAll(".porcentagem-acertos");
+  for (let i = 0; i < numNiveis; i++) {
+    porcentagemAcertos[i] = percentage[i].value;
+  }
 
-    let url = document.querySelectorAll('.url-nivel')
-    for(let i= 0; i<numNiveis ; i++){
-        urlNivel[i]= url[i].value
-    }
+  let url = document.querySelectorAll(".url-nivel");
+  for (let i = 0; i < numNiveis; i++) {
+    urlNivel[i] = url[i].value;
+  }
 
-    let description = document.querySelectorAll('.descricao-nivel')
-    for(let i= 0; i<numNiveis ; i++){
-        descricaoNivel[i]= description[i].value
-    }
+  let description = document.querySelectorAll(".descricao-nivel");
+  for (let i = 0; i < numNiveis; i++) {
+    descricaoNivel[i] = description[i].value;
+  }
 
-   for(let i=0 ; i<numNiveis; i++){
+  for (let i = 0; i < numNiveis; i++) {
     objetoLevels[i] = {
-        title:tituloNivel[i],
-        image:urlNivel[i],
-        text:descricaoNivel[i],
-        minValue: porcentagemAcertos
-    }
-   }
-    
-   console.log(objetoLevels)
-   formatarObjetoQuizz()
-    
+      title: tituloNivel[i],
+      image: urlNivel[i],
+      text: descricaoNivel[i],
+      minValue: porcentagemAcertos
+    };
+  }
+
+  console.log(objetoLevels);
+  formatarObjetoQuizz();
 }
-
-
-
-
-
-
-
-
-
 
 //URL BASE para fazer post e get, podemos só ir concatenando que nem o professor
-//const API = "https://mock-api.driven.com.br/api/v3/buzzquizz/quizzes"
-
+const API = "https://mock-api.driven.com.br/api/v3/buzzquizz/quizzes"
 
 //Pega lista de TODOS os quizzes da API
-function getQuizzes(){
-    let promisse = axios.get(`${API}`)
-    
-    promisse.then(response =>{
-        console.log(response.data)
-    })
-    
-    promisse.catch(error => console.log(error))
-}
+function getQuizzes() {
+  let promisse = axios.get(`${API}`);
 
+  promisse.then((response) => {
+    console.log(response.data);
+  });
+
+  promisse.catch((error) => console.log(error));
+}
 
 //Pega um quizz de acordo com seu ID ÚNICO
-function getQuizzForID(){
-    let id = 1200
-    let promisse = axios.get(`${API}/${id}`)
-    
-    promisse.then(response =>{
-        console.log(response.data)
-    })
-    
+function getQuizzForID() {
+  let id = 1200;
+  let promisse = axios.get(`${API}/${id}`);
+
+  promisse.then((response) => {
+    console.log(response.data);
+  });
 }
 
-
-
 //Podemos usar essa função para construir o nosso objeto na hora da fazer o quizz
-//Ela vai esta sendo chamada no post do "createQuizz", a partir dai a chama uma funcao de renderizar 
+//Ela vai esta sendo chamada no post do "createQuizz", a partir dai a chama uma funcao de renderizar
 //coloquei com prompts, mas a gente vai fazer com os valores dos inputs
 function formatarObjetoQuizz(){
     
     const objeto = {
         title: titulo,
         image: urlBanner,
-        questions: [
-            {
-                title: prompt('pergunta 1'),
-                color: "#123456",
-                answers: [
-                    {
-                        text: prompt('texto resposta 1'),
-                        image: prompt('imagem'),
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: prompt('texto responda 2'),
-                        image: prompt('imagem'),
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: prompt('titulo perg 2'),
-                color: "#123456",
-                answers: [
-                    {
-                        text: prompt('textoresposta 2'),
-                        image: prompt('image'),
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text:  prompt('textoresposta 2'),
-                        image: prompt('image'),
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: prompt('pergunta 3'),
-                color: "#123456",
-                answers: [
-                    {
-                        text: prompt('resposta'),
-                        image: prompt('image'),
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: prompt('resposta 3'),
-                        image: prompt('image'),
-                        isCorrectAnswer: false
-                    }
-                ]
-            }
-        ],
+        questions: objetoQuestions,
         levels: objetoLevels
     }
 
-    console.log(objeto)
-    return objeto
+    console.log(objeto);
+    return objeto;
 }
 
 //Faz o post do objeto criado (quizz do usuário)
-//Coloquei o objeto que tava lá no notion e está dando certo com ele, agora é so pegar as 
+//Coloquei o objeto que tava lá no notion e está dando certo com ele, agora é so pegar as
 //entradas do usuario e criar o nosso objeto
 
-function createQuizz(){
-    let promisse = axios.post(`${API}`,formatarObjetoQuizz()) 
+function createQuizz() {
+  let promisse = axios.post(`${API}`, formatarObjetoQuizz());
 
-    promisse.then(response =>{
+  promisse.then((response) => {
+    console.log(response.data);
+  });
 
-        console.log(response.data)
-    })
-
-    promisse.catch(error => alert('Você não preencheu todos os campos para criar o objeto corretamente'))
+  promisse.catch((error) =>
+    alert("Você não preencheu todos os campos para criar o objeto corretamente")
+  );
 }
-
-
 
 //getQuizzes()
 //getQuizzForID()
 //createQuizz()
 
-//renderiza a pág 9 no figma - Tela de criação das perguntas do quizz  
-function renderQuestionsPage() {
-    const questionsPage = document.querySelector("body");
-    questionsPage.innerHTML = ""
-    questionsPage.innerHTML += `
-    <p class="titulo-perguntas">Crie suas perguntas</p>
-    <div class="perguntas-container">
-  <button class="collapsible">Pergunta 1<ion-icon name="create-outline"></ion-icon></button>
-  <div class="content">
-  
-  <form>
-          <input id="pergunta" type="text" placeholder="Texto da página" required minlength="20"/>
-          <input id="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required/>
-          
-          <span class="subtitulo">Resposta Correta</span>
-          <input id="resposta-correta" type="text" placeholder="Resposta correta" required/>
-          <input id="url-imagem-resposta" type="url" placeholder="URL da imagem" pattern="https?://.+" required />
-          
-          <span class="subtitulo">Respostas Incorretas</span>
-          <input
-          id="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required />
-          <input id="url-imagem-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2"/>
-          <input id="url-imagem-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3"/>
-          <input id="url-imagem-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-  </form>
-  </div>
-  
-  <div class="perguntas-container">
-  <button class="collapsible">Pergunta 2<ion-icon name="create-outline"></ion-icon></button>
-  <div class="content">
-  
-  <form>
-          <input id="pergunta" type="text" placeholder="Texto da página" required minlength="20"/>
-          <input id="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required/>
-          
-          <span class="subtitulo">Resposta Correta</span>
-          <input id="resposta-correta" type="text" placeholder="Resposta correta" required/>
-          <input id="url-imagem-resposta" type="url" placeholder="URL da imagem" pattern="https?://.+" required />
-          
-          <span class="subtitulo">Respostas Incorretas</span>
-          <input
-          id="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required />
-          <input id="url-imagem-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2"/>
-          <input id="url-imagem-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3"/>
-          <input id="url-imagem-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-  </form>
-  </div>
-  
-  <div class="perguntas-container">
-  <button class="collapsible">Pergunta 3<ion-icon name="create-outline"></ion-icon></button>
-  <div class="content">
-  
-  <form>
-          <input id="pergunta" type="text" placeholder="Texto da página" required minlength="20"/>
-          <input id="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required/>
-          
-          <span class="subtitulo">Resposta Correta</span>
-          <input id="resposta-correta" type="text" placeholder="Resposta correta" required/>
-          <input id="url-imagem-resposta" type="url" placeholder="URL da imagem" pattern="https?://.+" required />
-          
-          <span class="subtitulo">Respostas Incorretas</span>
-          <input
-          id="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required />
-          <input id="url-imagem-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2"/>
-          <input id="url-imagem-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-          
-          <input id="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3"/>
-          <input id="url-imagem-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required />
-  </form>
-  </div>
+//renderiza a pág 9 no figma - Tela de criação das perguntas do quizz
+function callQuestionsPage() {
+  console.log("entrou no callquestion");
+  const questionsPage = document.querySelector("body");
+  questionsPage.innerHTML = "";
+  questionsPage.innerHTML = renderQuestionsPage();
+  openCollapsable();
+}
 
+let objetoQuestions = [];
+function renderQuestionsPage() {
+  let element = " ";
+  for (let i = 0; i < numPerguntas; i++) {
+    console.log("entrou no for");
+    element =
+      element +
+      `
+    
+    <div class="perguntas-container">
+  <button class="collapsible">Pergunta ${i + 1}
+    <ion-icon name="create-outline"></ion-icon></button>
+  <div class="content">
+  
+  <form>
+          <input class="pergunta-titulo" type="text" placeholder="Texto da pergunta"required minlength="20">
+          <input class="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required>
+          
+          <span class="subtitulo">Resposta Correta</span>
+          <input class="resposta-correta" type="text" placeholder="Resposta correta" required/>
+          <input class="url-imagem-resposta-correta" type="url" placeholder="URL da imagem" pattern="https?://.+" required>
+          
+          <span class="subtitulo">Respostas Incorretas</span>
+          <inputclass="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required>
+          <input class="url-imagem-incorreta-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required>
+          
+          <input class="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2"/>
+          <input class="url-imagem-incorreta-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required>
+          
+          <input class="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3"/>
+          <input class="url-imagem-incorreta-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required>
+  </form>
+  </div>`;
+  }
+  return `
+   <div class="header">
+    <h1>BuzzQuizz</h1>
+    </div>
+    <p class="titulo-perguntas">Crie suas perguntas</p>
+    <div>
+    ${element}
+    </div>
   <input onclick="callRendezizarFormNivelQuizz()" class="botao-prosseguir-perguntas" type="submit" value="Prosseguir para criar níveis">
   </div>
     `;
-    openCollapsable();
-  }
-  //Função para abrir o formulário de perguntas
-  function openCollapsable() {
-    let coll = document.getElementsByClassName("collapsible");
-    for (let i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        let content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    }
-  }
-  
-  //Função que verifica se a URL inserida é válida -> testar se o input não funcionar 
+    
+}
 
-  function isUrlValid(element) {
-    let input = document.getElementById(".url-imagem");
-    let verifica = input.match(
-      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
-    );
-    if (verifica === null) {
-      alert("URL invalida");
-    }
+//Função para abrir o formulário de perguntas
+function openCollapsable() {
+  let coll = document.getElementsByClassName("collapsible");
+  for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      let content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
   }
+}
+
+//Função que verifica se a URL inserida é válida -> testar se o input não funcionar
+
+/*function isUrlValid(element) {
+  let input = document.getElementById(".url-imagem");
+  let verifica = input.match(
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+  );
+  if (verifica === null) {
+    alert("URL invalida");
+  }
+}*/
 
 /*Função que verifica se os números inseridos são hexadeciais de cor -> testar se o input não funcionar 
 function isHexColor () {
@@ -389,3 +285,123 @@ function isHexColor () {
     && !isNaN(Number('0x' + cor))
 } 
 */
+
+function PostarPerguntasNaAPI() {
+  let promisse = axios.post(`${API}`, formatarObjetoQuizz());
+
+  promisse.then((response) => {
+    console.log(response.data);
+  });
+
+  promisse.catch((error) =>
+    alert("Você não preencheu todos os campos para criar o objeto corretamente")
+  );
+}
+
+function validaçãoFormPerguntaQuizz() {
+    let tituloPergunta = document.querySelectorAll(".pergunta-titulo");
+    for (let i = 0; i < numPerguntas; i++) {
+        tituloPergunta[i] = tituloPergunta[i].value;
+    }
+  
+    let corDeFundo = document.querySelectorAll(".cor-de-fundo");
+    for (let i = 0; i < numPerguntas; i++) {
+      corDeFundo[i] = corDeFundo[i].value;
+    }
+
+    let respostaCorreta = document.querySelectorAll(".resposta-correta");
+    for (let i = 0; i < numPerguntas; i++) {
+      respostaCorreta[i] = respostaCorreta[i].value;
+    }
+  
+    let urlImagemRespostaCorreta = document.querySelectorAll(".url-imagem-resposta-correta");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlImagemRespostaCorreta[i] = urlImagemRespostaCorreta[i].value;
+    }
+
+    let respostaIncorreta1 = document.querySelectorAll(".resposta-incorreta-1");
+    for (let i = 0; i < numPerguntas; i++) {
+        respostaIncorreta1[i] = respostaIncorreta1[i].value;
+    }
+
+    let urlImagemRespostaIncorreta1 = document.querySelectorAll(".url-imagem-incorreta-1");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlImagemRespostaIncorreta1[i] = urlImagemRespostaIncorreta1[i].value;
+    }
+
+    let respostaIncorreta2 = document.querySelectorAll(".resposta-incorreta-2");
+    for (let i = 0; i < numPerguntas; i++) {
+        respostaIncorreta2[i] = respostaIncorreta2[i].value;
+    }
+
+    let urlImagemRespostaIncorreta2 = document.querySelectorAll(".url-imagem-incorreta-2");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlImagemRespostaIncorreta2[i] = urlImagemRespostaIncorreta2[i].value;
+    }
+
+    let respostaIncorreta3 = document.querySelectorAll(".resposta-incorreta-3");
+    for (let i = 0; i < numPerguntas; i++) {
+        respostaIncorreta3[i] = respostaIncorreta3[i].value;
+    }
+
+    let urlImagemRespostaIncorreta3 = document.querySelectorAll(".url-imagem-incorreta-3");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlImagemRespostaIncorreta3[i] = urlImagemRespostaIncorreta3[i].value;
+    }
+
+    for (let i = 0; i < numPerguntas; i++) {
+      objetoQuestions[i] = {
+
+              title: tituloPergunta[i],
+              color: corDeFundo[i],
+              answers: [
+                {
+                  text: respostaCorreta[i],
+                  image: urlImagemRespostaCorreta[i],
+                  isCorrectAnswer: true
+                },
+                {
+                  text:  respostaIncorreta1[i],
+                  image: urlImagemRespostaIncorreta1[i],
+                  isCorrectAnswer: false
+                }
+              ]
+            },
+            {
+              title: tituloPergunta[i],
+              color: corDeFundo[i],
+              answers: [
+                {
+                  text: respostaCorreta[i],
+                  image: urlImagemRespostaCorreta[i],
+                  isCorrectAnswer: true
+                },
+                {
+                  text:  respostaIncorreta1[i],
+                  image: urlImagemRespostaIncorreta1[i],
+                  isCorrectAnswer: false
+                }
+              ]
+            },
+            {
+              title: tituloPergunta[i],
+              color: corDeFundo[i],
+              answers: [
+                {
+                  ttext: respostaCorreta[i],
+                  image: urlImagemRespostaCorreta[i],
+                  isCorrectAnswer: true
+                },
+                {
+                  text:  respostaIncorreta1[i],
+                  image: urlImagemRespostaIncorreta1[i],
+                  isCorrectAnswer: false
+                }
+              ]
+            }
+    }
+    console.log(objetoQuestions);
+    formatarObjetoQuizz();
+  }
+  
+ 

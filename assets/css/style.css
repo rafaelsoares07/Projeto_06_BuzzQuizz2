@@ -267,8 +267,6 @@ input .descricao-nivel{
     height: 500px;
 }
 
-
-  
   .collapsible {
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
@@ -324,7 +322,6 @@ input .descricao-nivel{
     border-radius: 5px;
     margin-bottom: 9px;
   }
-  
   .botao-prosseguir-perguntas {
     border: none;
     border-radius: 15px;
