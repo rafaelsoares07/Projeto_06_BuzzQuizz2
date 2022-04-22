@@ -164,6 +164,7 @@ function validaçãoFormNivelQuizz() {
             }
         }
         console.log(objetoLevels)
+        formatarObjetoQuizz()
         callRendezizarTelaSucesso()
     }
     else{
