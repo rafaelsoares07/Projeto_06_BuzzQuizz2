@@ -1,3 +1,7 @@
+function reload(){
+    location.reload()
+}
+
 //Tela 3.1 do layout (informacoes basicas)
 let titulo
 let numPerguntas
@@ -74,6 +78,7 @@ function callRendezizarFormNivelQuizz(){
     let body = document.querySelector('body')
     body.innerHTML= ''
     body.innerHTML = renderizarFormNivelQuizz()
+    openCollapsable()
 }
 function renderizarFormNivelQuizz(){
     let elemento =''
@@ -82,13 +87,19 @@ function renderizarFormNivelQuizz(){
         
         elemento= elemento+`
         <div class="container-niveis">
-        <label> Nivel ${i+1}</label>
-        <div class='caixa-nivel' onclick="visualizar(this)">
+       
+        <button style="color:black;" class = "btn-nivel collapsible"> Nível ${i+1} 
+        <ion-icon name="create-outline"></ion-icon>
+        </button>
+       
+       
+        <div class='content'>
         <input class="titulo-nivel" type="text" placeholder="Título do Nível" required minlength="10" >
         <input class="porcentagem-acertos" type="text" placeholder="% de acertos" required>
         <input class="url-nivel" type="text" placeholder="URL da imagem do nível" required min="3">
         <input class="descricao-nivel" type="text" placeholder="Descrição do nível" required min="2">  
         </div>
+
         </div>
         `
     }
@@ -139,11 +150,39 @@ function validaçãoFormNivelQuizz(){
    }
     
    console.log(objetoLevels)
-   formatarObjetoQuizz()
+   //fazer a condicional para chamar a funcao abaixo
+  callRendezizarTelaSucesso()
     
 }
 
 
+//Tela 3.4 do layout (sucesso da criação do quiz)
+function callRendezizarTelaSucesso(){
+    let body = document.querySelector('body')
+    body.innerHTML= ''
+    body.innerHTML = renderizarTelaSucesso()
+}
+function renderizarTelaSucesso(){
+    return ` 
+    <div class="form-create-quizz">
+        <div class=form-infos-niveis>
+            <div class="header">
+                <h1>BuzzQuizz</h1>
+            </div>
+
+             <div class="form-niveis">
+                 <p class="titulo-niveis">Seu Quizz está pronto</p> 
+
+                 <div class="img-banner">
+                    <img src="${urlBanner}" alt="">
+                    <p> ${titulo} </p>
+                </div>
+
+                <button onclick="validaçãoFormNivelQuizz()">Acessar Quizz</button>
+                <h5 class="texto-voltar-home" onclick ="reload()">Voltar para Home</h5>
+        </div>
+    </div>`
+}
 
 
 

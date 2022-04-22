@@ -168,7 +168,7 @@ margin-top:50px;
 .form-create-quizz{   
     width: 100%;
     min-height: 100vh;
-    background-color: #E5E5E5;
+    background-color: #faf6f6;
     
 }
 
@@ -177,7 +177,7 @@ margin-top:50px;
     font-weight: 700;
     display: flex;
     justify-content: center;
-    
+
 }
 
 .infos-basicas{
@@ -261,15 +261,13 @@ margin-top:50px;
     flex-direction: column;
     justify-content: space-around;
     height: calc(100% + 300px);
-    border: 1px solid red;
+    
 }
 input .descricao-nivel{
     height: 500px;
 }
 
-
-  
-  .collapsible {
+  .collapsible, button.collapsible {
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
     cursor: pointer;
@@ -344,3 +342,30 @@ input .descricao-nivel{
     cursor: pointer;
   }
   
+
+
+/*Tela de sucesso do layout*/
+
+.img-banner{
+    width: 500px;
+    height: 266;
+    position: relative;
+}
+
+.img-banner p {
+    position: absolute;
+    top: 95%;
+}
+
+.texto-voltar-home{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    color: #818181;
+    cursor: pointer;
+}
+
+.texto-voltar-home:hover{
+    color: #585656;
+}
