@@ -232,7 +232,7 @@ function formatarObjetoQuizz() {
     const objeto = {
         title: titulo,
         image: urlBanner,
-        questions: objetoQuestions,
+        questions: objetoQuestionsAnswers,
         levels: objetoLevels
     }
 
@@ -260,62 +260,10 @@ function createQuizz() {
 //getQuizzForID()
 //createQuizz()
 
+let checaPerguntaTitulo;
+let checaCorDeFundo;
+let checaUrlImagemRespostaCorreta;
 
-let objetoQuestions = [];
-//renderiza a pág 9 no figma - Tela de criação das perguntas do quizz
-function callQuestionsPage() {
-  console.log("entrou no callquestion");
-  const questionsPage = document.querySelector("body");
-  questionsPage.innerHTML = "";
-  questionsPage.innerHTML = renderQuestionsPage();
-  openCollapsable();
-}
-
-function renderQuestionsPage() {
-  let element = " ";
-  for (let i = 0; i < numPerguntas; i++) {
-    console.log("entrou no for");
-    element =
-      element +
-      `
-    <div class="perguntas-container">
-  <button class="collapsible">Pergunta ${i + 1}
-    <ion-icon name="create-outline"></ion-icon></button>
-  <div class="content">
-  
-  <form>
-          <input class="pergunta-titulo" type="text" placeholder="Texto da pergunta"required minlength="20">
-          <input class="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required>
-          
-          <span class="subtitulo">Resposta Correta</span>
-          <input class="resposta-correta" type="text" placeholder="Resposta correta" required/>
-          <input class="url-imagem-resposta-correta" type="url" placeholder="URL da imagem" pattern="https?://.+" required>
-          
-          <span class="subtitulo">Respostas Incorretas</span>
-          <inputclass="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required>
-          <input class="url-imagem-incorreta-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required>
-          
-          <input class="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2"/>
-          <input class="url-imagem-incorreta-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required>
-          
-          <input class="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3"/>
-          <input class="url-imagem-incorreta-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required>
-  </form>
-  </div>`;
-  }
-  return `
-   <div class="header">
-    <h1>BuzzQuizz</h1>
-    </div>
-    <p class="titulo-perguntas">Crie suas perguntas</p>
-    <div>
-    ${element}
-    </div>
-  <input onclick="callRendezizarFormNivelQuizz()" class="botao-prosseguir-perguntas" type="submit" value="Prosseguir para criar níveis">
-  </div>
-    `;
-    openCollapsable();
-}
 //Função para abrir o formulário de perguntas
 function openCollapsable() {
     let coll = document.getElementsByClassName("collapsible");
@@ -332,143 +280,3 @@ function openCollapsable() {
     }
 }
 
-//Função que verifica se a URL inserida é válida -> testar se o input não funcionar 
-
-function isUrlValid(element) {
-    let input = document.getElementById(".url-imagem");
-    let verifica = input.match(
-        /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
-    );
-    if (verifica === null) {
-        alert("URL invalida");
-    }
-}
-
-/*Função que verifica se os números inseridos são hexadeciais de cor -> testar se o input não funcionar 
-function isHexColor () {
-    let cor = document.getElementById('cor-de-fundo');
-    return typeof cor === 'string'
-    && cor.length === 6
-    && !isNaN(Number('0x' + cor))
-} 
-*/
-
-function PostarPerguntasNaAPI() {
-  let promisse = axios.post(`${API}`, formatarObjetoQuizz());
-
-  promisse.then((response) => {
-    console.log(response.data);
-  });
-
-  promisse.catch((error) =>
-    alert("Você não preencheu todos os campos para criar o objeto corretamente")
-  );
-}
-
-function validaçãoFormPerguntaQuizz() {
-    let tituloPergunta = document.querySelectorAll(".pergunta-titulo");
-    for (let i = 0; i < numPerguntas; i++) {
-        tituloPergunta[i] = tituloPergunta[i].value;
-    }
-  
-    let corDeFundo = document.querySelectorAll(".cor-de-fundo");
-    for (let i = 0; i < numPerguntas; i++) {
-      corDeFundo[i] = corDeFundo[i].value;
-    }
-
-    let respostaCorreta = document.querySelectorAll(".resposta-correta");
-    for (let i = 0; i < numPerguntas; i++) {
-      respostaCorreta[i] = respostaCorreta[i].value;
-    }
-  
-    let urlImagemRespostaCorreta = document.querySelectorAll(".url-imagem-resposta-correta");
-    for (let i = 0; i < numPerguntas; i++) {
-        urlImagemRespostaCorreta[i] = urlImagemRespostaCorreta[i].value;
-    }
-
-    let respostaIncorreta1 = document.querySelectorAll(".resposta-incorreta-1");
-    for (let i = 0; i < numPerguntas; i++) {
-        respostaIncorreta1[i] = respostaIncorreta1[i].value;
-    }
-
-    let urlImagemRespostaIncorreta1 = document.querySelectorAll(".url-imagem-incorreta-1");
-    for (let i = 0; i < numPerguntas; i++) {
-        urlImagemRespostaIncorreta1[i] = urlImagemRespostaIncorreta1[i].value;
-    }
-
-    let respostaIncorreta2 = document.querySelectorAll(".resposta-incorreta-2");
-    for (let i = 0; i < numPerguntas; i++) {
-        respostaIncorreta2[i] = respostaIncorreta2[i].value;
-    }
-
-    let urlImagemRespostaIncorreta2 = document.querySelectorAll(".url-imagem-incorreta-2");
-    for (let i = 0; i < numPerguntas; i++) {
-        urlImagemRespostaIncorreta2[i] = urlImagemRespostaIncorreta2[i].value;
-    }
-
-    let respostaIncorreta3 = document.querySelectorAll(".resposta-incorreta-3");
-    for (let i = 0; i < numPerguntas; i++) {
-        respostaIncorreta3[i] = respostaIncorreta3[i].value;
-    }
-
-    let urlImagemRespostaIncorreta3 = document.querySelectorAll(".url-imagem-incorreta-3");
-    for (let i = 0; i < numPerguntas; i++) {
-        urlImagemRespostaIncorreta3[i] = urlImagemRespostaIncorreta3[i].value;
-    }
-
-    for (let i = 0; i < numPerguntas; i++) {
-      objetoQuestions[i] = {
-
-              title: tituloPergunta[i],
-              color: corDeFundo[i],
-              answers: [
-                {
-                  text: respostaCorreta[i],
-                  image: urlImagemRespostaCorreta[i],
-                  isCorrectAnswer: true
-                },
-                {
-                  text:  respostaIncorreta1[i],
-                  image: urlImagemRespostaIncorreta1[i],
-                  isCorrectAnswer: false
-                }
-              ]
-            },
-            {
-              title: tituloPergunta[i],
-              color: corDeFundo[i],
-              answers: [
-                {
-                  text: respostaCorreta[i],
-                  image: urlImagemRespostaCorreta[i],
-                  isCorrectAnswer: true
-                },
-                {
-                  text:  respostaIncorreta1[i],
-                  image: urlImagemRespostaIncorreta1[i],
-                  isCorrectAnswer: false
-                }
-              ]
-            },
-            {
-              title: tituloPergunta[i],
-              color: corDeFundo[i],
-              answers: [
-                {
-                  ttext: respostaCorreta[i],
-                  image: urlImagemRespostaCorreta[i],
-                  isCorrectAnswer: true
-                },
-                {
-                  text:  respostaIncorreta1[i],
-                  image: urlImagemRespostaIncorreta1[i],
-                  isCorrectAnswer: false
-                }
-              ]
-            }
-    }
-    console.log(objetoQuestions);
-    formatarObjetoQuizz();
-  }
-  
- 
