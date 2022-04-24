@@ -93,14 +93,15 @@ function validarPerguntas() {
            }
         let  urlRespostaIncorreta = document.querySelectorAll(`.url-imagem-incorreta-${i + 1}`).value;
         for (let i = 0; i < numPerguntas; i++){
-            objRespostaIncorreta[i] = urlRespostaIncorreta[i].value;
+            objURLRespostaIncorreta[i] = urlRespostaIncorreta[i].value;
     }
 }
     
     let perguntaNaoVaziaTRUE;
     let respostaNaoVaziaTRUE;
     let perguntaCaracteresTRUE;
-    let urlValidaTRUE;
+    let urlValida1TRUE;
+    let urlValida2TRUE;
     let corValidaTRUE;
 
     //testa se os textos das perguntas não estão vazios
@@ -139,8 +140,18 @@ function validarPerguntas() {
 
     //testa se a url digitada é válida
     for (let i = 0; i < URLS.length; i++) {
-        if (URLS[i].includes("https://") || URLS[i].includes("http://")) {
-            urlValidaTRUE = true;
+        if (objURLRespostaCorreta[i].includes("https://") || objURLRespostaCorreta[i].includes("http://")) {
+            urlValida1TRUE = true;
+        }
+        else {
+            alert('URLS inválidas');
+            return;
+        }
+    }
+
+    for (let i = 0; i < URLS.length; i++) {
+        if (objURLRespostaIncorreta[i].includes("https://") || objURLRespostaIncorreta[i].includes("http://")) {
+            urlValida2TRUE = true;
         }
         else {
             alert('URLS inválidas');
@@ -160,7 +171,7 @@ function validarPerguntas() {
     }
 
     //Testar se o usuário digitou os campos de forma correta, se sim então o botão de prosseguir irá mandar os dados pra API e avançar p/ dela de níveis
-    if (perguntaNaoVaziaTRUE === true && perguntaCaracteresTRUE === true && respostaNaoVaziaTRUE === true && urlValidaTRUE === true && corValidaTRUE === true) {
+    if (perguntaNaoVaziaTRUE === true && perguntaCaracteresTRUE === true && respostaNaoVaziaTRUE === true && urlValida1TRUE === true && urlValida2TRUE === true && corValidaTRUE === true) {
         console.log("perguntas tudo ok");
         for (let i = 0; i < numPerguntas; i++){
             objetoQuestionsAnswers[i] = {
@@ -194,7 +205,7 @@ function validarPerguntas() {
 }
  
 function postarPerguntasNaAPI() {
-    let promise = axios.post(`${API}`, );
+    let promise = axios.post(`${API}`, objetoQuestionsAnswers);
 
     promise.then((response) => {
         console.log(response.data);
