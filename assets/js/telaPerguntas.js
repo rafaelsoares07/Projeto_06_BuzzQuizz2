@@ -1,4 +1,5 @@
 
+//chama a tela de perguntas
 function callQuestionsPage() {
     console.log("entrou no callquestion");
     const questionsPage = document.querySelector("body");
@@ -144,86 +145,98 @@ function validaçãoFormPerguntaQuizz() {
 function validarPerguntas() {
     for (let i = 0; i < numPerguntas; i++) {
 
-        perguntaTitulo1 = document.querySelector(`.pergunta-titulo-${i + 1}`).value;
-        corFundo1 = document.querySelector(`.cor-de-fundo-${i + 1}`).value;
-        respostaCorreta1 = document.querySelector(`.resposta-correta-${i + 1}`).value;
-        urlImagemRespostaCorreta1 = document.querySelector(`.url-imagem-resposta-correta-${i + 1}`).value;
-        respostaIncorreta1 = document.querySelector(`.resposta-incorreta1-${i + 1}`).value;
-        urlImagemRespostaIncorreta1 = document.querySelector(`.url-imagem-incorreta1-${i + 1}`).value;
+        let perguntaTitulo = document.querySelectorAll(`.pergunta-titulo-${i + 1}`)
+        for (let i = 0; i < numPerguntas; i++){
+         objPerguntaTitulo[i] = perguntaTitulo[i].value;
+        }
 
-        perguntaTitulo2 = document.querySelector(`.pergunta-titulo-${i + 1}`).value;
-        corFundo2 = document.querySelector(`.cor-de-fundo-${i + 1}`).value;
-        respostaCorreta2 = document.querySelector(`.resposta-correta-${i + 1}`).value;
-        urlImagemRespostaCorreta2 = document.querySelector(`.url-imagem-resposta-correta-${i + 1}`).value;
-        respostaIncorreta2 = document.querySelector(`.resposta-incorreta2-${i + 1}`).value;
-        urlImagemRespostaIncorreta2 = document.querySelector(`.url-imagem-incorreta2-${i + 1}`).value;
-
-        perguntaTitulo3 = document.querySelector(`.pergunta-titulo-${i + 1}`).value;
-        corFundo3 = document.querySelector(`.cor-de-fundo-${i + 1}`).value;
-        respostaCorreta3 = document.querySelector(`.resposta-correta-${i + 1}`).value;
-        urlImagemRespostaCorreta3 = document.querySelector(`.url-imagem-resposta-correta-${i + 1}`).value;
-        respostaIncorreta3 = document.querySelector(`.resposta-incorreta3-${i + 1}`).value;
-        urlImagemRespostaIncorreta3 = document.querySelector(`.url-imagem-incorreta3-${i + 1}`).value;
+        let corFundo = document.querySelectorAll(`.cor-de-fundo-${i + 1}`).value;
+        for (let i = 0; i < numPerguntas; i++){
+            objCorFundo[i] = corFundo[i].value;
+           }
+        let respostaCorreta = document.querySelectorAll(`.resposta-correta-${i + 1}`).value;
+        for (let i = 0; i < numPerguntas; i++){
+            objRespostaCorreta[i] = respostaCorreta[i].value;
+           }
+        let urlRespostaCorreta = document.querySelectorAll(`.url-imagem-resposta-correta-${i + 1}`).value;
+        for (let i = 0; i < numPerguntas; i++){
+            objURLRespostaCorreta[i] = urlRespostaCorreta[i].value;
+           }
+        let respostaIncorreta = document.querySelectorAll(`.resposta-incorreta-${i + 1}`).value;
+        for (let i = 0; i < numPerguntas; i++){
+            objRespostaIncorreta[i] = respostaIncorreta[i].value;
+           }
+        let  urlRespostaIncorreta = document.querySelectorAll(`.url-imagem-incorreta-${i + 1}`).value;
+        for (let i = 0; i < numPerguntas; i++){
+            objURLRespostaIncorreta[i] = urlRespostaIncorreta[i].value;
     }
-    let todasPerguntas = [perguntaTitulo1, perguntaTitulo2, perguntaTitulo3];
-    let todasRespostasCorretas = [respostaCorreta1, respostaCorreta2, respostaCorreta3];
-    let URLS = [urlImagemRespostaCorreta1, urlImagemRespostaCorreta2, urlImagemRespostaCorreta3, urlImagemRespostaIncorreta1, urlImagemRespostaIncorreta2, urlImagemRespostaIncorreta3];
-    let coresFundo = [corFundo1, corFundo2, corFundo3];
-
+}
+    
     let perguntaNaoVaziaTRUE;
     let respostaNaoVaziaTRUE;
     let perguntaCaracteresTRUE;
-    let urlValidaTRUE;
+    let urlValida1TRUE;
+    let urlValida2TRUE;
     let corValidaTRUE;
 
     //testa se os textos das perguntas não estão vazios
-    for (let i = 0; i < todasPerguntas.length; i++) {
-    if (todasPerguntas[i] === '' ) {
-        alert('Campos dos textos das perguntas não podem ficar vazios!');
-        return;
-    }
-    else {
-        perguntaNaoVaziaTRUE = true;
+    for (let i = 0; i < objPerguntaTitulo .length; i++) {
+        if (objPerguntaTitulo[i] === '') {
+            alert('Campos dos textos das perguntas não podem ficar vazios!');
+            return;
+        }
+        else {
+            perguntaNaoVaziaTRUE = true;
 
+        }
     }
-  }
 
     //testa se os campos das respostas corretas não estão vazios
-    for (let i = 0; i < todasRespostasCorretas.length; i++) {
-    if (todasRespostasCorretas[i] === '' ) {
-        alert('Campos das respostas corretas não podem ficar vazios!');
-        return;
-    }
-    else {
-        respostaNaoVaziaTRUE = true;
-     }
+    for (let i = 0; i < objRespostaCorreta.length; i++) {
+        if (objRespostaCorreta[i] === '') {
+            alert('Campos das respostas corretas não podem ficar vazios!');
+            return;
+        }
+        else {
+            respostaNaoVaziaTRUE = true;
+        }
     }
 
     // testa se os textos das perguntas têm menos de 20 caracteres
-    for (let i = 0; i < todasPerguntas.length; i++) {
-    if (todasPerguntas[i].length < 20) {
-        alert("Pergunta deve ter pelo menos 20 caracteres!");
-        return;
-    }
-    else {
-        perguntaCaracteresTRUE = true;
-     }
+    for (let i = 0; i < objPerguntaTitulo.length; i++) {
+        if (objPerguntaTitulo[i].length < 20) {
+            alert("Pergunta deve ter pelo menos 20 caracteres!");
+            return;
+        }
+        else {
+            perguntaCaracteresTRUE = true;
+        }
     }
 
     //testa se a url digitada é válida
     for (let i = 0; i < URLS.length; i++) {
-        if (URLS[i].includes("https://") || URLS[i].includes("http://")) {
-            urlValidaTRUE = true;
+        if (objURLRespostaCorreta[i].includes("https://") || objURLRespostaCorreta[i].includes("http://")) {
+            urlValida1TRUE = true;
         }
         else {
             alert('URLS inválidas');
             return;
         }
-    } 
-    
+    }
+
+    for (let i = 0; i < URLS.length; i++) {
+        if (objURLRespostaIncorreta[i].includes("https://") || objURLRespostaIncorreta[i].includes("http://")) {
+            urlValida2TRUE = true;
+        }
+        else {
+            alert('URLS inválidas');
+            return;
+        }
+    }
+
     //testa se a cor digitada é válida
-    for (let i = 0; i < coresFundo.length; i++) {
-        if (!coresFundo[i].includes("#") || coresFundo[i].length !== 7 || coresFundo[i] === '') {
+    for (let i = 0; i < objCorFundo.length; i++) {
+        if (!objCorFundo[i].includes("#") || objCorFundo[i].length !== 7 || objCorFundo[i] === '') {
             alert('Cor Inválida')
             return;
         }
@@ -233,78 +246,47 @@ function validarPerguntas() {
     }
 
     //Testar se o usuário digitou os campos de forma correta, se sim então o botão de prosseguir irá mandar os dados pra API e avançar p/ dela de níveis
-    if (perguntaNaoVaziaTRUE === true && perguntaCaracteresTRUE === true && respostaNaoVaziaTRUE === true && urlValidaTRUE === true && corValidaTRUE === true) {
+    if (perguntaNaoVaziaTRUE === true && perguntaCaracteresTRUE === true && respostaNaoVaziaTRUE === true && urlValida1TRUE === true && urlValida2TRUE === true && corValidaTRUE === true) {
         console.log("perguntas tudo ok");
-        postarPerguntasNaAPI();
-    }
-    else {
-        alert("Deu ruim");
-    }
-
-    //objeto que será mandado pra API
-    objetoQuestionsAnswers = {
-        questions: [
-            {
-                title: perguntaTitulo1,
-                color: corFundo1,
+        for (let i = 0; i < numPerguntas; i++){
+            objetoQuestionsAnswers[i] = {
+                title: objPerguntaTitulo[i],
+                color: objCorFundo[i],
                 answers: [
                     {
-                        text: respostaCorreta1,
-                        image: urlImagemRespostaCorreta1,
+                        text: objRespostaCorreta[i],
+                        image: objURLRespostaCorreta[i],
                         isCorrectAnswer: true
                     },
                     {
-                        text: respostaIncorreta1,
-                        image: urlImagemRespostaIncorreta1,
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: perguntaTitulo2,
-                color: corFundo2,
-                answers: [
-                    {
-                        text: respostaCorreta2,
-                        image: urlImagemRespostaCorreta2,
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: respostaIncorreta2,
-                        image: urlImagemRespostaIncorreta2,
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: perguntaTitulo3,
-                color: corFundo3,
-                answers: [
-                    {
-                        text: respostaCorreta3,
-                        image: urlImagemRespostaCorreta3,
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: respostaIncorreta3,
-                        image: urlImagemRespostaIncorreta3,
+                        text: objRespostaIncorreta[i],
+                        image: objURLRespostaIncorreta[i],
                         isCorrectAnswer: false
                     }
                 ]
             }
-        ]
+        }
+        formatarObjetoQuizz();
+        callRendezizarFormNivelQuizz();
+    }
+    else {
+        alert(`
+        Validações:\n 
+        Texto da pergunta precisa ter pelo menos 20 caracteres\n
+        Cor precisa ser no formato (#RRGGBB)\n
+        Precisa ter pelo menos 1 resposta correta \n 
+        URL precisa ser de uma imagem válida no formato ( https:// )`);
     }
 }
-
-//função para postar o objeto das perguntas e respostas criadas, será chamada pela função validarPerguntas() quando o formulário for digitado corretamente
+ 
 function postarPerguntasNaAPI() {
-    let promisse = axios.post(`${API}`, validarPerguntas());
+    let promise = axios.post(`${API}`, objetoQuestionsAnswers);
 
-    promisse.then((response) => {
+    promise.then((response) => {
         console.log(response.data);
     });
 
-    promisse.catch((error) =>
+    promise.catch((error) =>
         alert("Você não preencheu todos os campos para criar o objeto corretamente")
     );
 }
