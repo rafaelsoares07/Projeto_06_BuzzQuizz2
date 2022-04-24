@@ -1,12 +1,14 @@
+console.log('carregou scriptjs');
 function reload() {
     location.reload()
 }
 
+import { objetoQuestionsAnswers } from '/assets/js/telaPerguntas.js';
 //Tela 3.1 do layout (informacoes basicas)
-let titulo
-let numPerguntas
-let numNiveis
-let urlBanner
+export let titulo;
+export let numPerguntas;
+export let numNiveis;
+export let urlBanner;
 
 function callRenderizarFormsInfosBasicas() {
     let body = document.querySelector('body')
@@ -201,7 +203,7 @@ function renderizarTelaSucesso() {
 }
 
 //URL BASE para fazer post e get, podemos só ir concatenando que nem o professor
-const API = "https://mock-api.driven.com.br/api/v3/buzzquizz/quizzes"
+export const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 
 //Pega lista de TODOS os quizzes da API
 function getQuizzes() {
@@ -230,7 +232,7 @@ function getQuizzForID() {
 //coloquei com prompts, mas a gente vai fazer com os valores dos inputs
 function formatarObjetoQuizz() {
 
-    const objeto = {
+        const objeto = {
         title: titulo,
         image: urlBanner,
         questions: objetoQuestionsAnswers,
@@ -256,14 +258,9 @@ function createQuizz() {
   promisse.catch(error => alert('Você não preencheu todos os campos para criar o objeto corretamente'))
 }
 
-
 //getQuizzes()
 //getQuizzForID()
 //createQuizz()
-
-let checaPerguntaTitulo;
-let checaCorDeFundo;
-let checaUrlImagemRespostaCorreta;
 
 //Função para abrir o formulário de perguntas
 function openCollapsable() {
