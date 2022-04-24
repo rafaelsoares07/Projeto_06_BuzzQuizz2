@@ -49,7 +49,6 @@ function renderQuestionsPage() {
     <input onclick="validaçãoFormPerguntaQuizz()" class="botao-prosseguir-perguntas" type="submit" value="Prosseguir para criar níveis">
     </div>
       `;
-      openCollapsable();
   }
 
 let objetoQuestions = []

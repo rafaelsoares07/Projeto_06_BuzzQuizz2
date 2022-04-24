@@ -1,5 +1,7 @@
 const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 
+
+
 //Função para abrir criar a animaçãos das caixas de perguntas e niveis 
 function openCollapsable() {
     let coll = document.getElementsByClassName("collapsible");
@@ -15,4 +17,6 @@ function openCollapsable() {
         });
     }
 }
+
+
 

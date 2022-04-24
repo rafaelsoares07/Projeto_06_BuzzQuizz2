@@ -3,6 +3,8 @@ let numPerguntas
 let numNiveis
 let urlBanner
 
+
+
 function callRenderizarFormsInfosBasicas() {
     let body = document.querySelector('body')
     body.innerHTML = ''
