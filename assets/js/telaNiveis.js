@@ -4,8 +4,6 @@ function reload() {
 
 
 let objeto = {}
-let key =[]
-let ids = []
 let tituloNivel = []
 let porcentagemAcertos = []
 let urlNivel = []
@@ -134,10 +132,36 @@ function enviarQuizz() {
     promisse.catch(error => alert('Você não preencheu todos os campos para criar o objeto corretamente'))
 }
 
-function salvarDadosLocalmente(respostaAPI){
-    ids.push(respostaAPI.data.id)
-    key.push(respostaAPI.data.key)
 
-     localStorage.setItem('identificador',ids);
-     localStorage.setItem('chave',key);
+
+//LOGÍCA DO LOCALSTORAGE
+let arrayArmazenado = localStorage.getItem('ids')
+let arrayIds = JSON.parse(arrayArmazenado)
+
+let arrayArmazenadoKey = localStorage.getItem('key')
+let arrayKeys = JSON.parse(arrayArmazenadoKey)
+
+if(arrayArmazenado==null && arrayArmazenadoKey==null && arrayIds ==null && arrayKeys==null){
+    arrayArmazenado=[]
+    arrayIds =[]
+    arrayArmazenadoKey=[]
+    arrayKeys = []
+    console.log('TUDO ZERADO')
 }
+
+function salvarDadosLocalmente(respostaAPI){
+    {let dadosId = respostaAPI.data.id
+    arrayIds.push(dadosId)
+    arrayIdsString = JSON.stringify(arrayIds)
+    localStorage.setItem('ids',arrayIdsString) 
+    }
+
+    {let dadosKey = respostaAPI.data.key
+    arrayKeys.push(dadosKey)
+    arrayKeysString = JSON.stringify(arrayKeys)
+    localStorage.setItem('key',arrayKeysString) 
+    }
+
+}
+
+//PARA ACESSAR OS IDS E URL BASTA USAR AS VARIAVEIS arrayIds e arrayKeys
