@@ -1,4 +1,3 @@
-//Tela de criação das perguntas do quizz
 
 function callQuestionsPage() {
     console.log("entrou no callquestion");
@@ -7,36 +6,35 @@ function callQuestionsPage() {
     questionsPage.innerHTML = renderQuestionsPage();
     openCollapsable();
 }
-
 function renderQuestionsPage() {
     let element = " ";
     for (let i = 0; i < numPerguntas; i++) {
-        console.log("entrou no for");
-        element =
-            element +
-            `
+      console.log("entrou no for");
+      element =
+        element +
+        `
       <div class="perguntas-container">
     <button class="collapsible">Pergunta ${i + 1}
       <ion-icon name="create-outline"></ion-icon></button>
     <div class="content">
     
     <form>
-            <input class="pergunta-titulo-${i + 1}" type="text" placeholder="Texto da pergunta"required minlength="20">
-            <input class="cor-de-fundo-${i + 1}" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required>
+            <input class="pergunta-titulo" type="text" placeholder="Texto da pergunta"required minlength="20" value="titulo da perguntaaa">
+            <input class="cor-de-fundo" type="text" placeholder="Cor de fundo da pergunta" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required value="#123456">
             
             <span class="subtitulo">Resposta Correta</span>
-            <input class="resposta-correta-${i + 1}" type="text" placeholder="Resposta correta" required/>
-            <input class="url-imagem-resposta-correta-${i + 1}" type="url" placeholder="URL da imagem" pattern="https?://.+" required>
+            <input class="resposta-correta" type="text" placeholder="Resposta correta" required/ value="Texto da resposta 1">
+            <input class="url-imagem-resposta-correta" type="url" placeholder="URL da imagem" pattern="https?://.+" required value="https://http.cat/411.jpg"> 
             
             <span class="subtitulo">Respostas Incorretas</span>
-            <input class="resposta-incorreta1-${i + 1}" type="text" placeholder="Resposta incorreta 1" required>
-            <input class="url-imagem-incorreta1-${i + 1}" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required>
+            <input class="resposta-incorreta-1" type="text" placeholder="Resposta incorreta 1" required value="Texto da resposta 1">
+            <input class="url-imagem-incorreta-1" type="url" placeholder="URL da imagem 1" pattern="https?://.+" required value ="https://http.cat/411.jpg">
             
-            <input class="resposta-incorreta2-${i + 1}" type="text" placeholder="Resposta incorreta 2"/>
-            <input class="url-imagem-incorreta2-${i + 1}" type="url" placeholder="URL da imagem 2" pattern="https?://.+" required>
+            <input class="resposta-incorreta-2" type="text" placeholder="Resposta incorreta 2" value="Texto da resposta 1" />
+            <input class="url-imagem-incorreta-2" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required value ="https://http.cat/411.jpg">
             
-            <input class="resposta-incorreta3-${i + 1}" type="text" placeholder="Resposta incorreta 3"/>
-            <input class="url-imagem-incorreta3-${i + 1}" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required>
+            <input class="resposta-incorreta-3" type="text" placeholder="Resposta incorreta 3" value="Texto da resposta 1"/>
+            <input class="url-imagem-incorreta-3" type="url" placeholder="URL da imagem 3" pattern="https?://.+" required value="https://http.cat/411.jpg">
     </form>
     </div>`;
     }
@@ -48,36 +46,102 @@ function renderQuestionsPage() {
       <div>
       ${element}
       </div>
-    <input onclick="avancarParaTelaDeNiveis()" class="botao-prosseguir-perguntas" value="Prosseguir para criar níveis">
+    <input onclick="validaçãoFormPerguntaQuizz()" class="botao-prosseguir-perguntas" type="submit" value="Prosseguir para criar níveis">
     </div>
       `;
-    openCollapsable();
-}
+      openCollapsable();
+  }
 
-//Variáveis e objeto das perguntas e respostas
-let objetoQuestionsAnswers = {};
+let objetoQuestions = []
+let tituloDaPergunta =[]
+let colorDaPergunda = []
+let respCorreta =[]
+let urlRespCorreta =[]
+let respIncorreta1 = []
+let urlRespIncorreta1 = []
+let respIncorreta2 = []
+let urlRespIncorreta2 = []
+let respIncorreta3 = []
+let urlRespIncorreta3 = []
 
-let perguntaTitulo1;
-let corFundo1;
-let respostaCorreta1;
-let urlImagemRespostaCorreta1;
-let respostaIncorreta1;
-let urlImagemRespostaIncorreta1;
+function validaçãoFormPerguntaQuizz() {
+    let tituloPergunta = document.querySelectorAll(".pergunta-titulo");
+    for (let i = 0; i < numPerguntas; i++) {
+        tituloDaPergunta[i] = tituloPergunta[i].value;
+    }
+  
+    let corDeFundo = document.querySelectorAll(".cor-de-fundo");
+    for (let i = 0; i < numPerguntas; i++) {
+      colorDaPergunda[i]= corDeFundo[i].value;
+    }
 
-let perguntaTitulo2;
-let corFundo2;
-let respostaCorreta2;
-let urlImagemRespostaCorreta2;
-let respostaIncorreta2;
-let urlImagemRespostaIncorreta2;
+    let respostaCorreta = document.querySelectorAll(".resposta-correta");
+    for (let i = 0; i < numPerguntas; i++) {
+      respCorreta[i] = respostaCorreta[i].value;
+    }
+  
+    let urlImagemRespostaCorreta = document.querySelectorAll(".url-imagem-resposta-correta");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlRespCorreta[i] = urlImagemRespostaCorreta[i].value;
+    }
 
-let perguntaTitulo3;
-let corFundo3;
-let respostaCorreta3;
-let urlImagemRespostaCorreta3;
-let respostaIncorreta3;
-let urlImagemRespostaIncorreta3;
+    let respostaIncorreta1 = document.querySelectorAll(".resposta-incorreta-1");
+    for (let i = 0; i < numPerguntas; i++) {
+        respIncorreta1[i] = respostaIncorreta1[i].value;
+    }
 
+    let urlImagemRespostaIncorreta1 = document.querySelectorAll(".url-imagem-incorreta-1");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlRespIncorreta1[i] = urlImagemRespostaIncorreta1[i].value;
+    }
+
+    let respostaIncorreta2 = document.querySelectorAll(".resposta-incorreta-2");
+    for (let i = 0; i < numPerguntas; i++) {
+        respIncorreta2[i] = respostaIncorreta2[i].value;
+    }
+
+    let urlImagemRespostaIncorreta2 = document.querySelectorAll(".url-imagem-incorreta-2");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlRespIncorreta2[i] = urlImagemRespostaIncorreta2[i].value;
+    }
+
+    let respostaIncorreta3 = document.querySelectorAll(".resposta-incorreta-3");
+    for (let i = 0; i < numPerguntas; i++) {
+        respIncorreta3[i] = respostaIncorreta3[i].value;
+    }
+
+    let urlImagemRespostaIncorreta3 = document.querySelectorAll(".url-imagem-incorreta-3");
+    for (let i = 0; i < numPerguntas; i++) {
+        urlRespIncorreta3[i] = urlImagemRespostaIncorreta3[i].value;
+    }
+
+    
+
+    for (let i = 0; i < numPerguntas; i++) {
+      objetoQuestions[i] = {
+        title:tituloDaPergunta[i],
+        color:colorDaPergunda[i],
+        answers:[
+          {
+            text:respCorreta[i],
+            image:urlRespCorreta[i],
+            isCorrectAnswer: true
+          },
+          {
+            text:respIncorreta1[i],
+            image:urlRespIncorreta1[i],
+            isCorrectAnswer:false
+          }
+        ]
+
+      }
+    }
+    
+    callRendezizarFormNivelQuizz()
+  }
+
+
+/*
 function validarPerguntas() {
     for (let i = 0; i < numPerguntas; i++) {
 
@@ -250,3 +314,7 @@ function postarPerguntasNaAPI() {
 function avancarParaTelaDeNiveis() {
     validarPerguntas();
 }
+
+*/
+
+
