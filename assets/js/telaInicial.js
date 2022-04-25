@@ -102,7 +102,7 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz" onclick="callgetElementsByIdQuizzs(${ids[i]})">
+        <li class="quizz" onclick="callgetElementsByIdQuizzs('${ids[i]}')">
         <img src="${url[i]}">
         <div class="gradient"></div>;
         <span class="titulo-quizz">${title[i]}</span>

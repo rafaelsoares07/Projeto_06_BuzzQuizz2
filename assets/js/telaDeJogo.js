@@ -6,15 +6,15 @@ let tamRespostas;
 let elementoAA =''
 let elementoFinal = ''
 
-function callgetElementsByIdQuizzs(){
+function callgetElementsByIdQuizzs(el){
     let body = document.querySelector('body')
     body.innerHTML =''
-    getElementsByIdQuizzs();
+    getElementsByIdQuizzs(el);
 }
 
-function getElementsByIdQuizzs() {
+function getElementsByIdQuizzs(el) {
   
-  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${ids}`;
+  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${el}`;
   let promisse = axios.get(urlGet);
   promisse
     .then((response) => {
