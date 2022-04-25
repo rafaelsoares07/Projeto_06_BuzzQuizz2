@@ -36,11 +36,12 @@ function getElementsByIdQuizzs(){
         let promisse = axios.get(urlGet)
         promisse.then(response=>{
             
-            elemento+=  
-            `<li class="quizz">
-            <span>${response.data.title}</span>
-            <img src="${response.data.image}" alt="quizz img" />
-            </li>`      
+            elemento+= ` 
+            <li class="quizz">
+                <img src="${response.data.image}">
+                <div class="gradient"></div>
+                <span class="titulo-quizz">${response.data.title}</span>
+            </li>`   
         })
         
     }
@@ -90,10 +91,10 @@ function callRenderTelaInicialComQuizzUsuario(){
 function renderTelaInicialComQuizzUsuario() {
 
         return `
-   <div class="your-quizzes"> 
-        <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon onclick="callRenderizarFormsInfosBasicas()" name="add-circle"></ion-icon></span>
-   ${elemento}
-   <div>`;  
+        <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon name="add-circle" onclick="callRenderizarFormsInfosBasicas()"></ion-icon></span>
+        <div class="your-quizzes"> 
+        ${elemento}<div/>
+        `;             
     }
                     
 
@@ -112,7 +113,10 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz"><span>${title[i]}</span> <img src="${url[i]}">
+        <li class="quizz">
+        <img src="${url[i]}">
+        <div class="gradient"></div>
+        <span class="titulo-quizz">${title[i]}</span>
             </li>
             `;
     i++;
