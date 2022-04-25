@@ -1,8 +1,7 @@
 let title = [];
 let url = [];
-let todasIds = [];
+let ids = [];
 let elemento =''
-let id = [];
 
 
 //pega todos os quizz da API
@@ -12,22 +11,12 @@ function getQuizz(){
        for(let i=0 ; i<response.data.length;i++){
            title[i]=response.data[i].title;
            url[i]=response.data[i].image;
+           ids[i]=response.data[i].id;
        }
        callTelaInicial();
     })
 }
 getQuizz();
-
-//Pega todas IDs da API
-function getIDs(){
-    let promisse = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes")
-    promisse.then(response=>{
-       for(let i=0 ; i<response.data.length;i++){
-           todasIds[i]=response.data[i].id;
-       }
-    })
-}
-getIDs();
 
 function getElementsByIdQuizzs(){
     
@@ -113,13 +102,12 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz" onclick="callgetElementsByIdQuizzs(${todasIds[i]})">
+        <li class="quizz" onclick="callgetElementsByIdQuizzs(${ids[i]})">
         <img src="${url[i]}">
         <div class="gradient"></div>;
         <span class="titulo-quizz">${title[i]}</span>
             </li>
             `;
-    
     i++;
     
     }

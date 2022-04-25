@@ -6,11 +6,6 @@ let tamRespostas;
 let elementoAA =''
 let elementoFinal = ''
 
-
-function getIdClicada(){
-
-}
-
 function callgetElementsByIdQuizzs(){
     let body = document.querySelector('body')
     body.innerHTML =''
@@ -18,8 +13,8 @@ function callgetElementsByIdQuizzs(){
 }
 
 function getElementsByIdQuizzs() {
-  for (let i = 0; i < todasIds.length; i++ ){
-  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${todasIds[i]}`;
+  
+  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${ids}`;
   let promisse = axios.get(urlGet);
   promisse
     .then((response) => {
@@ -30,7 +25,6 @@ function getElementsByIdQuizzs() {
       renderizarContainerQuestions(response2);
     });
   }
-}
 
 function renderizarCabecalho(resp) {
   let container = document.querySelector("body");
