@@ -468,3 +468,46 @@ form input {
 .container-niveis button {
     border-radius: 0px;
 }
+
+
+
+
+
+.caixa-pergunta{
+    margin: 0 auto;
+    width: 850px;
+}
+
+.caixa-pergunta h3{
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f1f1f1;
+}
+
+.caixa-flex{
+    border: 2px solid red;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.caixa-unitaria{
+    width: 250px;
+    cursor: pointer;
+    border: 1px solid blue;
+}
+.caixa-unitaria h4{
+    word-wrap: break-word;
+}
+.caixa-unitaria img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}

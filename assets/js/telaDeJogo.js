@@ -60,9 +60,11 @@ function renderizarContainerQuestions(resp) {
     elementoFinal = 
     `<div style="border: 1px solid green;" class="caixa-pergunta">
     
-    <h3>${resp.questions[i].title}</h3>
+    <h3 style="background-color:${resp.questions[i].color};">${resp.questions[i].title}</h3>
+    <div class="caixa-flex">
     ${elementoAA}
-    
+    </div>
+
     </div>`
 
     container.innerHTML+= elementoFinal
