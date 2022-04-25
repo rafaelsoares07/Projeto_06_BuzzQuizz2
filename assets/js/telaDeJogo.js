@@ -52,16 +52,19 @@ function renderizarContainerQuestions(resp) {
 
     for (let j = 0; j < tamRespostas; j++) {
         
-        elementoAA+= `<h4>${resp.questions[i].answers[j].text}</h4>
+        elementoAA+= `<div resultado="${resp.questions[i].answers[j].isCorrectAnswer}" class ="caixa-unitaria">
                     <img src="${resp.questions[i].answers[j].image}">
-                    <h6>${resp.questions[i].answers[j].isCorrectAnswer}</h6>`
+                    <h4>${resp.questions[i].answers[j].text}</h4>
+                    </div>`
     }
     elementoFinal = 
     `<div style="border: 1px solid green;" class="caixa-pergunta">
+    
     <h3>${resp.questions[i].title}</h3>
     ${elementoAA}
-    </div>`
     
+    </div>`
+
     container.innerHTML+= elementoFinal
     
     elementoAA=''
