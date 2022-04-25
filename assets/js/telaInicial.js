@@ -37,7 +37,7 @@ function getElementsByIdQuizzs(){
         promisse.then(response=>{
             
             elemento+= ` 
-            <li class="quizz">
+            <li class="quizz" onclick="callgetElementsByIdQuizzs()">
                 <img src="${response.data.image}">
                 <div class="gradient"></div>
                 <span class="titulo-quizz">${response.data.title}</span>
@@ -113,7 +113,7 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz">
+        <li class="quizz" onclick="callgetElementsByIdQuizzs()">
         <img src="${url[i]}">
         <div class="gradient"></div>
         <span class="titulo-quizz">${title[i]}</span>

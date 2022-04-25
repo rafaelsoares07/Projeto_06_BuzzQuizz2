@@ -13,7 +13,7 @@ function callgetElementsByIdQuizzs(){
     getElementsByIdQuizzs()
 }
 
-callgetElementsByIdQuizzs()
+
 
 
 
@@ -36,9 +36,13 @@ function renderizarCabecalho(resp) {
   imagem = resp.image;
 
   container.innerHTML = `
-  <div>
+  <div class="header">
+    <h1>BuzzQuizz</h1>
+    </div>
+  <div class="banner">
+  <div class="gradient-banner"></div>
     <h1>${tituloAA}</h1>
-    <h2>${imagem}</h2>
+    <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/07/ilha-grande-rio-de-janeiro-capa2019-01.jpg">
   </div>`;
 }
 
