@@ -26,7 +26,7 @@ function getElementsByIdQuizzs(){
         promisse.then(response=>{
             
             elemento+= ` 
-            <li class="quizz" onclick="callgetElementsByIdQuizzs(this)">
+            <li class="quizz" onclick="callgetElementsByIdQuizzs('${response.data.id}')">
                 <img src="${response.data.image}">
                 <div class="gradient"></div>
                 <span class="titulo-quizz">${response.data.title}</span>
