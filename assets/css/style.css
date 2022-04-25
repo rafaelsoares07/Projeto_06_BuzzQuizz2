@@ -9,7 +9,7 @@ body {
     font-family: 'Roboto';
 }
 
-header{
+header {
     width: 100%;
     height: 69px;
     background-color: #EC362D;
@@ -20,10 +20,10 @@ header{
     position: fixed;
     left: 0px;
     top: 0px;
-    z-index: 1;
+    z-index: 3;
 }
 
-.header{
+.header {
     width: 100vw;
     height: 69px;
     background-color: #EC362D;
@@ -33,7 +33,7 @@ header{
     justify-content: center;
 }
 
-html{
+html {
 
     position: relative;
 }
@@ -61,8 +61,9 @@ h3 {
 .hidden {
     display: none;
 }
-.container-tudo{
-    margin-left:100px;
+
+.container-tudo {
+    margin-left: 100px;
 }
 
 .create-quizz-container {
@@ -112,8 +113,18 @@ h3 {
     cursor: pointer;
 }
 
+.quizz-usuario-container {
+    margin-top: 100px;
+}
+
 .your-quizzes {
-margin-top:50px;
+    margin-top: 50px;
+    display: flex;
+    width: 1051px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 190px;
 }
 
 .your-quizzes-title {
@@ -130,6 +141,10 @@ margin-top:50px;
     text-align: center;
     margin-top: 50px;
 }
+.your-quizzes-title ion-icon:hover{
+    cursor:pointer;
+    filter: brightness(80%);
+}
 
 .quizz-container {
     display: flex;
@@ -144,40 +159,55 @@ margin-top:50px;
 .quizz {
     margin-bottom: 8px;
     word-break: break-all;
+    position: relative;
 }
 
 .quizz img {
     width: 340px;
     height: 181px;
     border-radius: 5px;
+    cursor: pointer;
+}
+.quizz:hover{
+    cursor:pointer;
+    filter:brightness(80%);
 }
 
-.quizz span {
-    width: 301px;
-    height: 54px;
-    font-weight: 400;
-    font-size: 19px;
-    display: flex;
-    align-items: center;
+.titulo-quizz {
     position: absolute;
-    color: #fff;
-    padding-top: 155px;
-    padding-left: 20px;
-    z-index:1;
+    bottom: 0;
+    left: 0;
+    padding: 14px;
+    color: #FFFFFF;
+    font-size: 19px;
+    word-break: break-all;
+    z-index: 2;
+}
+
+.gradient {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 45%);
+    width: 340px;
+    height: 181px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    object-fit: inherit;
 }
 
 /* @media () {} */
 
 /* CSS da TELA 3.1 (INFOS BASICAS)*/
 
-.form-create-quizz{   
+.form-create-quizz {
     width: 100%;
     min-height: 100vh;
     background-color: #faf6f6;
-    
+
 }
 
-.titulo{
+.titulo {
     font-size: 23px;
     font-weight: 700;
     display: flex;
@@ -185,17 +215,18 @@ margin-top:50px;
 
 }
 
-.infos-basicas{
+.infos-basicas {
     margin: 0 auto;
     width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
+
 }
-.form-infos-basicas{
-    
+
+.form-infos-basicas {
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -204,25 +235,26 @@ margin-top:50px;
 }
 
 
-.form-create-quizz input{
+.form-create-quizz input {
     width: 564px;
     height: 46px;
     border-radius: 5px;
     border: none;
 }
-.form-create-quizz button{
+
+.form-create-quizz button {
     border: none;
     border-radius: 15px;
     width: 340px;
     height: 54px;
-    color:#FFF5F4;
-    background-color:#EC362D;
+    color: #FFF5F4;
+    background-color: #EC362D;
     font-size: 21px;
     margin: 0 auto;
 }
 
 /*CSS da TELA 3.3 (NÍVEIS)*/
-.titulo-niveis{
+.titulo-niveis {
     font-size: 23px;
     font-weight: 700;
     display: flex;
@@ -237,9 +269,9 @@ margin-top:50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  
-  .titulo-perguntas {
+}
+
+.titulo-perguntas {
     font-size: 23px;
     font-weight: 700;
     display: flex;
@@ -247,32 +279,37 @@ margin-top:50px;
     margin-top: 100px;
     margin-bottom: 15px;
 }
-.form-infos-niveis{
+
+.form-infos-niveis {
     margin: 0 auto;
     width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-   
+
+
 }
-.form-infos-niveis input{
+
+.form-infos-niveis input {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.form-niveis{   
+
+.form-niveis {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: calc(100% + 300px);
-    
+
 }
-input .descricao-nivel{
+
+input .descricao-nivel {
     height: 500px;
 }
 
-  .collapsible, button.collapsible {
+.collapsible,
+button.collapsible {
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(14, 14, 14, 0.05);
     cursor: pointer;
@@ -287,47 +324,48 @@ input .descricao-nivel{
     font-weight: 700;
     font-size: 20px;
     margin: 20px 0;
-  }
-  
-  .collapsible ion-icon {
+}
+
+.collapsible ion-icon {
     content: "\002B";
     font-weight: bold;
     float: right;
     margin-left: 5px;
     font-size: 26px;
-  }
-  
-  .collapsible ion-icon:hover {
+}
+
+.collapsible ion-icon:hover {
     color: gray;
     cursor: pointer;
-  }
-  
-  .content {
+}
+
+.content {
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-  }
-  
-  .subtitulo {
+}
+
+.subtitulo {
     font-size: 20px;
     font-weight: bold;
     margin: 15px 0 15px;
-  }
-  
-  form {
+}
+
+form {
     margin-top: 10px;
-  }
-  
-  form input {
+}
+
+form input {
     width: 100%;
     padding: 12px;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     margin-bottom: 9px;
-  }
-  .botao-prosseguir-perguntas {
+}
+
+.botao-prosseguir-perguntas {
     border: none;
     border-radius: 15px;
     width: 340px;
@@ -339,39 +377,40 @@ input .descricao-nivel{
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .botao-prosseguir-perguntas:hover {
+}
+
+.botao-prosseguir-perguntas:hover {
     background-color: #aa311e;
     color: lightgray;
     cursor: pointer;
-  }
-  
+}
+
 
 
 /*Tela de sucesso do layout*/
 
-.img-banner{
+.img-banner {
     width: 500px;
     height: 266px;
     position: relative;
     margin-bottom: 20px;
 }
 
-.img-banner img{
-    object-fit:cover;
+.img-banner img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
 .img-banner p {
-  
+
     color: #FFF;
     font-weight: bold;
     position: absolute;
     top: 90%;
 }
 
-.texto-voltar-home{
+.texto-voltar-home {
     margin-top: 10px;
     text-align: center;
     font-size: 21px;
@@ -380,10 +419,10 @@ input .descricao-nivel{
     cursor: pointer;
 }
 
-.texto-voltar-home:hover{
+.texto-voltar-home:hover {
     color: #585656;
 }
 
-.container-niveis button{
+.container-niveis button {
     border-radius: 0px;
 }

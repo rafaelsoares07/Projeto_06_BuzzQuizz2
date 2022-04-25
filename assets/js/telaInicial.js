@@ -62,14 +62,18 @@ function callRenderTelaInicialComQuizzUsuario(){
 
 function renderTelaInicialComQuizzUsuario() {
     let element = " ";
-    for (let i = 0; i < arrayIds.length; i++) {
+    for (let i = 0; i < 9; i++) {
         element += ` 
-        <li class="quizz"><span>titulo</span><img src="imagem" alt="quizz img" />
-        </li>`;               
+        <li class="quizz">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0G5oh2zzTvxPTzMobAoPbSvHxNmwZLZhhKA&usqp=CAU">
+        <div class="gradient"></div>
+        <span class="titulo-quizz">titulo</span>
+            </li>
+            `;               
      }
      return `
+     <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon name="add-circle" onclick="callRenderizarFormsInfosBasicas()"></ion-icon></span>
      <div class="your-quizzes"> 
-    <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon name="add-circle"></ion-icon></span>
      ${element}<div>
      `;                  
 }
@@ -84,7 +88,10 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz"><span>${title[i]}</span> <img src="${url[i]}">
+        <li class="quizz">
+        <img src="${url[i]}">
+        <div class="gradient"></div>
+        <span class="titulo-quizz">${title[i]}</span>
             </li>
             `;
     i++;
