@@ -6,19 +6,20 @@ let tamRespostas;
 let elementoAA =''
 let elementoFinal = ''
 
+
+function getIdClicada(){
+
+}
+
 function callgetElementsByIdQuizzs(){
     let body = document.querySelector('body')
     body.innerHTML =''
-    
-    getElementsByIdQuizzs()
+    getElementsByIdQuizzs();
 }
 
-
-
-
-
 function getElementsByIdQuizzs() {
-  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/1068`;
+  for (let i = 0; i < todasIds.length; i++ ){
+  let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${todasIds[i]}`;
   let promisse = axios.get(urlGet);
   promisse
     .then((response) => {
@@ -28,6 +29,7 @@ function getElementsByIdQuizzs() {
       renderizarCabecalho(response2);
       renderizarContainerQuestions(response2);
     });
+  }
 }
 
 function renderizarCabecalho(resp) {
@@ -42,7 +44,7 @@ function renderizarCabecalho(resp) {
   <div class="banner">
   <div class="gradient-banner"></div>
     <h1>${tituloAA}</h1>
-    <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/07/ilha-grande-rio-de-janeiro-capa2019-01.jpg">
+    <img src="${imagem}">
   </div>`;
 }
 

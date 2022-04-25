@@ -2,7 +2,7 @@ let title = [];
 let url = [];
 let todasIds = [];
 let elemento =''
-
+let id = [];
 
 
 //pega todos os quizz da API
@@ -37,7 +37,7 @@ function getElementsByIdQuizzs(){
         promisse.then(response=>{
             
             elemento+= ` 
-            <li class="quizz" onclick="callgetElementsByIdQuizzs()">
+            <li class="quizz" onclick="callgetElementsByIdQuizzs(this)">
                 <img src="${response.data.image}">
                 <div class="gradient"></div>
                 <span class="titulo-quizz">${response.data.title}</span>
@@ -113,13 +113,15 @@ function renderTodosQuizzes(){
     let i = 0;
     while (i < url.length){
         element += `    
-        <li class="quizz" onclick="callgetElementsByIdQuizzs()">
+        <li class="quizz" onclick="callgetElementsByIdQuizzs(${todasIds[i]})">
         <img src="${url[i]}">
-        <div class="gradient"></div>
+        <div class="gradient"></div>;
         <span class="titulo-quizz">${title[i]}</span>
             </li>
             `;
+    
     i++;
+    
     }
     
     return `${element}`;
