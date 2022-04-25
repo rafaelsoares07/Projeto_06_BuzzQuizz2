@@ -1,6 +1,9 @@
 let title = [];
 let url = [];
 let todasIds = [];
+let elemento =''
+
+
 
 //pega todos os quizz da API
 function getQuizz(){
@@ -25,6 +28,27 @@ function getIDs(){
     })
 }
 getIDs();
+
+function getElementsByIdQuizzs(){
+    
+    for(let i =0; i<arrayIds.length;i++){
+        let urlGet = `https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${arrayIds[i]}`
+        let promisse = axios.get(urlGet)
+        promisse.then(response=>{
+            
+            elemento+=  
+            `<li class="quizz">
+            <span>${response.data.title}</span>
+            <img src="${response.data.image}" alt="quizz img" />
+            </li>`      
+        })
+        
+    }
+    
+}
+
+getElementsByIdQuizzs()
+
 
 //essa função vai checar se tem quizz do usuario armazenado no local storage.
 //se não tiver então vai renderizar aquela área com borda pontilhada.
@@ -55,24 +79,28 @@ function renderTelaInicialSemQuizzUsuario() {
 }
 //renderiza os quizzes do usuário com o botão de + para criar quizz (não sei como puxar os do usuário em específico)
 function callRenderTelaInicialComQuizzUsuario(){
-    const renderComQuizz = document.querySelector(".quizz-usuario-container");
-    renderComQuizz.innerHTML= '';
-    renderComQuizz.innerHTML = renderTelaInicialComQuizzUsuario();
+    setTimeout(()=>{
+        const renderComQuizz = document.querySelector(".quizz-usuario-container");
+        renderComQuizz.innerHTML= '';
+        renderComQuizz.innerHTML = renderTelaInicialComQuizzUsuario();
+    },500)
+    
 }
 
 function renderTelaInicialComQuizzUsuario() {
-    let element = " ";
-    for (let i = 0; i < arrayIds.length; i++) {
-        element += ` 
-        <li class="quizz"><span>titulo</span><img src="imagem" alt="quizz img" />
-        </li>`;               
-     }
-     return `
-     <div class="your-quizzes"> 
-    <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon name="add-circle"></ion-icon></span>
-     ${element}<div>
-     `;                  
-}
+
+        return `
+   <div class="your-quizzes"> 
+        <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon onclick="callRenderizarFormsInfosBasicas()" name="add-circle"></ion-icon></span>
+   ${elemento}
+   <div>`;  
+    }
+                    
+
+
+
+
+
 //renderiza todos os quizzes da API no html
 function callRenderTodosQuizzes(){
     const renderTdsQuizzes = document.querySelector(".quizz-container");
@@ -94,4 +122,3 @@ function renderTodosQuizzes(){
    }
 
 
-       
