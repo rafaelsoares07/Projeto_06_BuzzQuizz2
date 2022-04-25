@@ -32,10 +32,11 @@ getIDs();
 function callTelaInicial() {
     if (arrayIds.length === 0) {
         renderTelaInicialSemQuizzUsuario();
-        setTimeout(callRenderTodosQuizzes, 1000);
+        callRenderTodosQuizzes();
     }
     else {
         callRenderTelaInicialComQuizzUsuario();
+        callRenderTodosQuizzes();
     }
 }
 //renderiza aquela área pontilhada com o botão para criar o quizz quando o usuário não criou nenhum ainda
@@ -54,33 +55,22 @@ function renderTelaInicialSemQuizzUsuario() {
 }
 //renderiza os quizzes do usuário com o botão de + para criar quizz (não sei como puxar os do usuário em específico)
 function callRenderTelaInicialComQuizzUsuario(){
-    getQuizz();
     const renderComQuizz = document.querySelector(".quizz-usuario-container");
     renderComQuizz.innerHTML= '';
     renderComQuizz.innerHTML = renderTelaInicialComQuizzUsuario();
-    
 }
 
 function renderTelaInicialComQuizzUsuario() {
     let element = " ";
-    for (let i = 0; i < arrayIds; i++) {
+    for (let i = 0; i < arrayIds.length; i++) {
         element += ` 
-        <li class="quizz">
-        <span>(titulo)</span>
-        <img src="(imagem)" alt="quizz img" />
-         </li> 
-        `;               
+        <li class="quizz"><span>titulo</span><img src="imagem" alt="quizz img" />
+        </li>`;               
      }
      return `
      <div class="your-quizzes"> 
-        <span class="your-quizzes-title">
-            <h3>Seus Quizzes</h3>
-                <ion-icon name="add-circle"></ion-icon>
-                    </span>
-     <span class="your-quizzes-title">
-     <h3>Seus Quizzes</h3>
-     <ion-icon name="add-circle"></ion-icon>
-     </span>${element}
+    <span class="your-quizzes-title"><h3>Seus Quizzes</h3><ion-icon name="add-circle"></ion-icon></span>
+     ${element}<div>
      `;                  
 }
 //renderiza todos os quizzes da API no html
@@ -100,7 +90,7 @@ function renderTodosQuizzes(){
     i++;
     }
     
-    return `<h3>Todos os quizzes</h3>${element}`;
+    return `${element}`;
    }
 
 
