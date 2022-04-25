@@ -52,7 +52,8 @@ function renderizarContainerQuestions(resp) {
 
     for (let j = 0; j < tamRespostas; j++) {
         
-        elementoAA+= `<h4>${resp.questions[i].answers[j].text}</h4>
+        elementoAA+= `<h3>${resp.questions[i].title}</h3>
+                    <h4>${resp.questions[i].answers[j].text}</h4>
                     <img src="${resp.questions[i].answers[j].image}">
                     <h6>${resp.questions[i].answers[j].isCorrectAnswer}</h6>`
     }
