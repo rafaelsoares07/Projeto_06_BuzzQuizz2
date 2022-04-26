@@ -57,7 +57,7 @@ function renderizarContainerQuestions(resp) {
     for (let j = 0; j < tamRespostas; j++) {
         
         elementoAA+= `
-        <div resultado="${resp.questions[i].answers[j].isCorrectAnswer}" class ="caixa-unitaria">
+        <div resultado="${resp.questions[i].answers[j].isCorrectAnswer}" class ="caixa-unitaria" onclick="selectResposta(this)">
           <img src="${resp.questions[i].answers[j].image}">
           <h4>${resp.questions[i].answers[j].text}</h4>
         </div>`
@@ -80,3 +80,22 @@ function renderizarContainerQuestions(resp) {
   
 }
 
+function selectResposta(element) {
+  const cjPerguntas = element.parentNode;
+  const clicou = cjPerguntas.querySelector(".resposta-nao-clicada");
+  if (clicou === null) {
+      const cjRespostas = cjPerguntas.children;
+      for (let i = 0; i < cjRespostas.length; i++) {
+
+          cjRespostas[i].classList.add('resposta-nao-clicada');
+          let gabarito = cjRespostas[i].getAttribute('resultado');
+
+          if (gabarito === "true") {
+              cjRespostas[i].classList.add('resposta-certa')
+          } else {
+              cjRespostas[i].classList.add('resposta-errada') 
+          }
+      }
+    }
+    element.classList.remove("resposta-nao-clicada");
+}

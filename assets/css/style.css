@@ -513,3 +513,15 @@ form input {
     height: 250px;
     object-fit: cover;
 }
+
+.resposta-nao-clicada {
+    opacity: 30%;
+}
+
+.resposta-certa{
+    color:green;
+}
+
+.resposta-errada{
+    color:red;
+}
