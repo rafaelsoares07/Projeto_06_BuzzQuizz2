@@ -1,4 +1,51 @@
-@media (max-width:900px){
+@media (max-width:900px) {
+
+    h1 {
+       
+        width:50%;
+    }
+
+    .header h1{
+        margin-left:500px;
+    }
+
+    .container-tudo {
+        margin-left: 0px;;
+    }
+
+    .create-quizz-container{
+        width:50%;
+    }
+    .create-quizz-container h2{
+    margin-left:0px;
+    } 
+    .create-quizz-button {
+        margin-left:0px;
+    }
+    .quizz-usuario-container {
+        width: 100%;
+    }
+
+    .your-quizzes-title .quizz {
+        justify-content: space-between;
+    }
+
+    .your-quizzes-title ion-icon {
+        margin-left:0px;
+    }
+
+    .quizz {
+        width: 100%;
+    }
+
+    .your-quizzes {
+        flex-direction: column;
+    }
+    .form-niveis{
+        padding-top:100px;
+    }
+           /* */
+
     .caixa-pergunta{
         width: 90vw;
     }
@@ -74,6 +121,3 @@
         color: #818181;
     }
 }
-
-
-
