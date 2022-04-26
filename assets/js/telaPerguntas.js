@@ -116,98 +116,119 @@ function validaçãoFormPerguntaQuizz() {
     }
 
 
+    let tituloOK =tituloDaPergunta.every(element => element.length>19)
+    let colorOK =colorDaPergunda.every(element=> element.startsWith('#'))
+    let urlcorretaOK = urlRespCorreta.every(element=> element.startsWith('https://'))
+    let urlincorreta1OK = urlRespIncorreta1.every(element => element.startsWith('https://'))
+    let urlincorreta2OK = urlRespIncorreta2.every(element => element.startsWith('https://') || element=='' )
+    let urlincorreta3OK = urlRespIncorreta3.every(element => element.startsWith('https://') || element=='' )
 
+    console.log(tituloOK)
+    console.log(urlcorretaOK)
+    console.log(urlincorreta1OK)
+    console.log(urlincorreta2OK)
+    console.log(urlincorreta3OK)
 
+    if(tituloOK && colorOK && urlcorretaOK && urlincorreta1OK && urlincorreta2OK && urlincorreta3OK){
 
+        for (let i = 0; i < numPerguntas; i++) {
 
-    for (let i = 0; i < numPerguntas; i++) {
-
-        let duasPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '';
-        let tresPerguntasTrue = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '';
-        let quatroPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '' && respIncorreta3[i] != '';
-
-
-        if (quatroPerguntasTRUE) { //so tem duas respostas preenchidas
-
-            objetoQuestions[i] = {
-                title: tituloDaPergunta[i],
-                color: colorDaPergunda[i],
-                answers: [
-                    {
-                        text: respCorreta[i],
-                        image: urlRespCorreta[i],
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: respIncorreta1[i],
-                        image: urlRespIncorreta1[i],
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: respIncorreta2[i],
-                        image: urlRespIncorreta2[i],
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: respIncorreta3[i],
-                        image: urlRespIncorreta3[i],
-                        isCorrectAnswer: false
-                    }
-
-                ]
-
+            let duasPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '';
+            let tresPerguntasTrue = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '';
+            let quatroPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '' && respIncorreta3[i] != '';
+    
+    
+            if (quatroPerguntasTRUE) { //so tem duas respostas preenchidas
+    
+                objetoQuestions[i] = {
+                    title: tituloDaPergunta[i],
+                    color: colorDaPergunda[i],
+                    answers: [
+                        {
+                            text: respCorreta[i],
+                            image: urlRespCorreta[i],
+                            isCorrectAnswer: true
+                        },
+                        {
+                            text: respIncorreta1[i],
+                            image: urlRespIncorreta1[i],
+                            isCorrectAnswer: false
+                        },
+                        {
+                            text: respIncorreta2[i],
+                            image: urlRespIncorreta2[i],
+                            isCorrectAnswer: false
+                        },
+                        {
+                            text: respIncorreta3[i],
+                            image: urlRespIncorreta3[i],
+                            isCorrectAnswer: false
+                        }
+    
+                    ]
+    
+                }
             }
-        }
-
-        else if (tresPerguntasTrue) { // so tem 3 preenchidas
-            console.log('3')
-            objetoQuestions[i] = {
-                title: tituloDaPergunta[i],
-                color: colorDaPergunda[i],
-                answers: [
-                    {
-                        text: respCorreta[i],
-                        image: urlRespCorreta[i],
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: respIncorreta1[i],
-                        image: urlRespIncorreta1[i],
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: respIncorreta2[i],
-                        image: urlRespIncorreta2[i],
-                        isCorrectAnswer: false
-                    }
-                ]
-
+    
+            else if (tresPerguntasTrue) { // so tem 3 preenchidas
+                console.log('3')
+                objetoQuestions[i] = {
+                    title: tituloDaPergunta[i],
+                    color: colorDaPergunda[i],
+                    answers: [
+                        {
+                            text: respCorreta[i],
+                            image: urlRespCorreta[i],
+                            isCorrectAnswer: true
+                        },
+                        {
+                            text: respIncorreta1[i],
+                            image: urlRespIncorreta1[i],
+                            isCorrectAnswer: false
+                        },
+                        {
+                            text: respIncorreta2[i],
+                            image: urlRespIncorreta2[i],
+                            isCorrectAnswer: false
+                        }
+                    ]
+    
+                }
             }
-        }
-        else if (duasPerguntasTRUE) { //todas as respostas estao preenchidas
-            console.log('2')
-            objetoQuestions[i] = {
-                title: tituloDaPergunta[i],
-                color: colorDaPergunda[i],
-                answers: [
-                    {
-                        text: respCorreta[i],
-                        image: urlRespCorreta[i],
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: respIncorreta1[i],
-                        image: urlRespIncorreta1[i],
-                        isCorrectAnswer: false
-                    }
-                ]
-
+            else if (duasPerguntasTRUE) { //todas as respostas estao preenchidas
+                console.log('2')
+                objetoQuestions[i] = {
+                    title: tituloDaPergunta[i],
+                    color: colorDaPergunda[i],
+                    answers: [
+                        {
+                            text: respCorreta[i],
+                            image: urlRespCorreta[i],
+                            isCorrectAnswer: true
+                        },
+                        {
+                            text: respIncorreta1[i],
+                            image: urlRespIncorreta1[i],
+                            isCorrectAnswer: false
+                        }
+                    ]
+    
+                }
             }
+    
         }
-
+    
+        callRendezizarFormNivelQuizz()
+    }
+    else{
+        alert(`Validacões:\n
+            Titulo da pergunta: 20 letras no minimo\n
+            Cor no formato hexadecimal EX: (#457839)\n
+            Url das imagens precisa estar no formato https://
+            `)
     }
 
-    callRendezizarFormNivelQuizz()
+    
 }
 
 

@@ -119,11 +119,6 @@ function selectResposta(element) {
   }
   element.classList.remove("resposta-ja-clicada");
 
-  
-  /*setTimeout(()=>{
-    window.scrollTo(0, element.parentNode.scrollHeight)
-  },800)*/
-
 
   verificarGameOver()
 }
@@ -189,7 +184,7 @@ function reiniciar(){
   setTimeout(()=>{
     window.scrollTo(document.body.scrollHeight,0)
   },2000)
-  
+
   document.querySelector('.resultado-nivel-user').remove()
   
   document.querySelectorAll(".resposta-errada").forEach((el)=>{
