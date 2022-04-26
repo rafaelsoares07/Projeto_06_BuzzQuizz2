@@ -558,6 +558,32 @@ form input {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    padding: 20px;
+    padding: 20px 0px;
 
+}
+
+.comandos-tela-niveis{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+
+}
+
+.comandos-tela-niveis button{
+    margin-top: 30px;
+    width:260px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: #EC362D;
+    color: #FFF5F4;
+    font-size:21px;
+
+}
+
+.comandos-tela-niveis a{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 21px;
+    color: #818181;
 }

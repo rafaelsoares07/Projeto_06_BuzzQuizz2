@@ -168,9 +168,9 @@ function verificarGameOver() {
 
       <div class="comandos-tela-niveis">
         <button>Reinciar</button>
-        <a>Voltar para menu</a>
+        <a onclick="reload()">Voltar para menu</a>
       </div>
-      
+
     </div>`
   }
 }
