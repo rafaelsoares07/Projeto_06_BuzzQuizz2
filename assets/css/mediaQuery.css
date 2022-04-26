@@ -1,0 +1,123 @@
+@media (max-width:900px) {
+
+    h1 {
+       
+        width:50%;
+    }
+
+    .header h1{
+        margin-left:500px;
+    }
+
+    .container-tudo {
+        margin-left: 0px;;
+    }
+
+    .create-quizz-container{
+        width:50%;
+    }
+    .create-quizz-container h2{
+    margin-left:0px;
+    } 
+    .create-quizz-button {
+        margin-left:0px;
+    }
+    .quizz-usuario-container {
+        width: 100%;
+    }
+
+    .your-quizzes-title .quizz {
+        justify-content: space-between;
+    }
+
+    .your-quizzes-title ion-icon {
+        margin-left:0px;
+    }
+
+    .quizz {
+        width: 100%;
+    }
+
+    .your-quizzes {
+        flex-direction: column;
+    }
+    .form-niveis{
+        padding-top:100px;
+    }
+           /* */
+
+    .caixa-pergunta{
+        width: 90vw;
+    }
+    .caixa-unitaria{
+        width:40%;
+        min-width:175px;
+        margin-bottom: 50px;
+        
+    }
+    .caixa-unitaria h4{
+        font-weight: bold;
+        word-wrap: break-word;
+    }
+    .caixa-unitaria img{
+        width: 100%;
+        height: 100%;
+        
+    }
+
+
+    /*CSS da caixa de nivel*/
+    .resultado-nivel-user{
+        width: 90vw;
+        margin: 30px auto;
+    }
+    .resultado-nivel-user h3{
+        height: 65px;
+   
+    }
+    .resultado-nivel-user img{
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+    }
+    
+    .resultado-nivel-user p {
+        margin-top: 10px;
+        word-wrap: break-word;
+        
+    }
+    
+    .caixa-resultado-nivel{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 0px;
+    
+    }
+    
+    .comandos-tela-niveis{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+    
+    }
+    
+    .comandos-tela-niveis button{
+        margin-top: 30px;
+        width:260px;
+        height: 50px;
+        border: none;
+        border-radius: 15px;
+        background-color: #EC362D;
+        color: #FFF5F4;
+        font-size:21px;
+    
+    }
+    
+    .comandos-tela-niveis a{
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 21px;
+        color: #818181;
+    }
+}

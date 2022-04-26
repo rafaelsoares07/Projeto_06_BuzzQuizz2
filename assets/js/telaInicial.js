@@ -58,7 +58,7 @@ function renderTelaInicialSemQuizzUsuario() {
     const renderSemQuizz = document.querySelector(".main-page");
     renderSemQuizz.innerHTML = "";
     renderSemQuizz.innerHTML +=
-        `
+        `    
             <div class="create-quizz-container"> 
                     <h2>Você não criou nenhum quizz ainda :(</h2>
                     <div class="create-quizz-button">
