@@ -115,33 +115,124 @@ function validaçãoFormPerguntaQuizz() {
         urlRespIncorreta3[i] = urlImagemRespostaIncorreta3[i].value;
     }
 
-    //se as outtras variaveis do input tiverEM SEM NADA REDEZIRA UM ONBJETO COM APENAS AS 
-    //ANSWERS QUE ESTAO PREENCHIDAS
-    // (f 2)  (if 3) (if 4) e esse for debaixo diferente chamando a funcao callrenderizar niveis
 
+
+
+    
     for (let i = 0; i < numPerguntas; i++) {
-      objetoQuestions[i] = {
-        title:tituloDaPergunta[i],
-        color:colorDaPergunda[i],
-        answers:[
-          {
-            text:respCorreta[i],
-            image:urlRespCorreta[i],
-            isCorrectAnswer: true
-          },
-          {
-            text:respIncorreta1[i],
-            image:urlRespIncorreta1[i],
-            isCorrectAnswer:false
-          }
-        ]
 
-      }
+    let duasPerguntasTRUE = respCorreta[i]!='' && respIncorreta1!='';
+    let tresPerguntasTrue= respCorreta[i]!='' && respIncorreta1!='' && respIncorreta2[i]!='';
+    let quatroPerguntasTRUE = respCorreta[i]!='' && respIncorreta1!='' && respIncorreta2[i]!='' && respIncorreta3[i]!='';
+
+    
+    if(quatroPerguntasTRUE){ //so tem duas respostas preenchidas
+        
+        objetoQuestions[i] = {
+            title:tituloDaPergunta[i],
+            color:colorDaPergunda[i],
+            answers:[
+              {
+                text:respCorreta[i],
+                image:urlRespCorreta[i],
+                isCorrectAnswer: true
+              },
+              {
+                text:respIncorreta1[i],
+                image:urlRespIncorreta1[i],
+                isCorrectAnswer:false
+              },
+              {
+                text:respIncorreta2[i],
+                image:urlRespIncorreta2[i],
+                isCorrectAnswer:false
+              },
+              {
+                text:respIncorreta3[i],
+                image:urlRespIncorreta3[i],
+                isCorrectAnswer:false
+              }
+
+            ]
+    
+          }
+    }
+
+    else if(tresPerguntasTrue){ // so tem 3 preenchidas
+        console.log('3')
+        objetoQuestions[i] = {
+            title:tituloDaPergunta[i],
+            color:colorDaPergunda[i],
+            answers:[
+              {
+                text:respCorreta[i],
+                image:urlRespCorreta[i],
+                isCorrectAnswer: true
+              },
+              {
+                text:respIncorreta1[i],
+                image:urlRespIncorreta1[i],
+                isCorrectAnswer:false
+              },
+              {
+                text:respIncorreta2[i],
+                image:urlRespIncorreta2[i],
+                isCorrectAnswer:false
+              }
+            ]
+    
+          }
+    }
+    else if(duasPerguntasTRUE){ //todas as respostas estao preenchidas
+        console.log('2')
+        objetoQuestions[i] = {
+            title:tituloDaPergunta[i],
+            color:colorDaPergunda[i],
+            answers:[
+              {
+                text:respCorreta[i],
+                image:urlRespCorreta[i],
+                isCorrectAnswer: true
+              },
+              {
+                text:respIncorreta1[i],
+                image:urlRespIncorreta1[i],
+                isCorrectAnswer:false
+              }
+            ]
+    
+          }
+    }
+      
     }
     
     callRendezizarFormNivelQuizz()
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//se as outtras variaveis do input tiverEM SEM NADA REDEZIRA UM ONBJETO COM APENAS AS 
+    //ANSWERS QUE ESTAO PREENCHIDAS
+    // (f 2)  (if 3) (if 4) e esse for debaixo diferente chamando a funcao callrenderizar niveis
 
 /*
 function validarPerguntas() {
