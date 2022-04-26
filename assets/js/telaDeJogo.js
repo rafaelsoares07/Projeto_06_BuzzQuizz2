@@ -1,7 +1,8 @@
 function comparador(){
   return Math.random() - 0.5;
 }
-
+let contadorDeAcertos=0
+let contadorTotal = 0
 let tituloAA;
 let imagem;
 let tamPerguntas;
@@ -81,21 +82,43 @@ function renderizarContainerQuestions(resp) {
 }
 
 function selectResposta(element) {
+
+  //Não deixa clicar mais de uma vez nos elementos que já foram expostos
+   if(element.classList.contains('resposta-certa') || element.classList.contains('resposta-errada')){
+    return
+  }
+
+  //Guarda a quantidades de acertos e a quantidade de tentativas
+  if(element.getAttribute('resultado')==='true'){
+    contadorDeAcertos++;
+    contadorTotal++
+  }else{
+    contadorTotal++
+  }
+
+ 
+  
   const cjPerguntas = element.parentNode;
-  const clicou = cjPerguntas.querySelector(".resposta-nao-clicada");
+  const clicou = cjPerguntas.querySelector(".resposta-ja-clicada");
   if (clicou === null) {
       const cjRespostas = cjPerguntas.children;
       for (let i = 0; i < cjRespostas.length; i++) {
 
-          cjRespostas[i].classList.add('resposta-nao-clicada');
+          cjRespostas[i].classList.add('resposta-ja-clicada');
           let gabarito = cjRespostas[i].getAttribute('resultado');
 
           if (gabarito === "true") {
               cjRespostas[i].classList.add('resposta-certa')
+              
           } else {
-              cjRespostas[i].classList.add('resposta-errada') 
+              cjRespostas[i].classList.add('resposta-errada')
+             
           }
       }
     }
-    element.classList.remove("resposta-nao-clicada");
+    element.classList.remove("resposta-ja-clicada");
+
+  
 }
+
+

@@ -514,7 +514,7 @@ form input {
     object-fit: cover;
 }
 
-.resposta-nao-clicada {
+.resposta-ja-clicada {
     opacity: 30%;
 }
 
