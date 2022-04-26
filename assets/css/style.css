@@ -106,10 +106,6 @@ h3 {
     display: none;
 }
 
-.container-tudo {
-    margin-left: 350px;
-}
-
 .create-quizz-container {
     width: 1051px;
     height: 181px;
@@ -347,6 +343,7 @@ padding-top:150px;
     flex-direction: column;
     justify-content: space-around;
     height: calc(100% + 300px);
+    margin-top:100px;
 
 }
 
