@@ -24,7 +24,7 @@ header {
 }
 
 .header {
-    width: 100vw;
+    width: 100%;
     height: 69px;
     background-color: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -87,6 +87,7 @@ h1 {
     font-size: 37px;
     color: #FFFFFF;
     font-family: 'Roboto';
+    padding-right:50px;
 }
 
 h3 {
@@ -106,7 +107,7 @@ h3 {
 }
 
 .container-tudo {
-    margin-left: 100px;
+    margin-left: 350px;
 }
 
 .create-quizz-container {
@@ -157,7 +158,7 @@ h3 {
 }
 
 .quizz-usuario-container {
-    margin-top: 100px;
+    margin-bottom: 20px;
 }
 
 .your-quizzes {
@@ -176,6 +177,10 @@ h3 {
     text-align: center;
 }
 
+.your-quizzes-title h3 {
+padding-top:150px;
+}
+
 .your-quizzes-title ion-icon {
     font-size: 30px;
     color: #EC362D;
@@ -183,6 +188,7 @@ h3 {
     align-items: center;
     text-align: center;
     margin-top: 50px;
+    padding-top:170px;
 }
 .your-quizzes-title ion-icon:hover{
     cursor:pointer;
@@ -237,8 +243,6 @@ h3 {
     z-index: 1;
     object-fit: inherit;
 }
-
-/* @media () {} */
 
 /* CSS da TELA 3.1 (INFOS BASICAS)*/
 
@@ -468,11 +472,6 @@ form input {
 .container-niveis button {
     border-radius: 0px;
 }
-
-
-
-
-
 .caixa-pergunta{
     margin: 0 auto;
     width: 850px;
@@ -526,8 +525,6 @@ form input {
     color:red;
 }
 
-
-
 .resultado-nivel-user{
     width: 800px;
     margin: 30px auto;
@@ -561,3 +558,38 @@ form input {
     padding: 20px;
 
 }
+
+
+
+@media (max-width: 1100px) {
+
+    body {
+        width: 100%;
+    }
+
+    h1 {
+     margin-right:500px;   
+    
+    }
+    .container-tudo {
+        margin-left:0px;
+    }
+    .quizz-usuario-container{
+        width:100%;
+        height:100%;
+    }
+    .your-quizzes-title .quizz {
+      justify-content: space-between;
+    }
+    .your-quizzes-title ion-icon {
+        margin-right:100px;
+      }
+
+      .quizz {
+        width: 100%;
+      }
+  
+    .your-quizzes{
+      flex-direction: column;
+    }
+  }
