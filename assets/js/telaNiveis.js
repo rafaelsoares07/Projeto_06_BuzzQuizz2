@@ -134,6 +134,8 @@ function enviarQuizz() {
 
 
 
+
+
 //LOGÍCA DO LOCALSTORAGE
 let arrayArmazenado = localStorage.getItem('ids')
 let arrayIds = JSON.parse(arrayArmazenado)
@@ -164,4 +166,3 @@ function salvarDadosLocalmente(respostaAPI){
 
 }
 
-//PARA ACESSAR OS IDS E URL BASTA USAR AS VARIAVEIS arrayIds e arrayKeys

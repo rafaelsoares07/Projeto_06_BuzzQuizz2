@@ -514,7 +514,7 @@ form input {
     object-fit: cover;
 }
 
-.resposta-nao-clicada {
+.resposta-ja-clicada {
     opacity: 30%;
 }
 
@@ -524,4 +524,40 @@ form input {
 
 .resposta-errada{
     color:red;
+}
+
+
+
+.resultado-nivel-user{
+    width: 800px;
+    margin: 30px auto;
+}
+.resultado-nivel-user h3{
+    background-color:#aa311e;
+    color: #FFFFFF;
+    width: 100%;
+    height: 55px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    
+}
+.resultado-nivel-user img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.resultado-nivel-user p {
+    margin-left: 10px;
+    word-wrap: break-word;
+    
+}
+
+.caixa-resultado-nivel{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+
 }

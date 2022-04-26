@@ -10,10 +10,10 @@ function callQuestionsPage() {
 function renderQuestionsPage() {
     let element = " ";
     for (let i = 0; i < numPerguntas; i++) {
-      console.log("entrou no for");
-      element =
-        element +
-        `
+        console.log("entrou no for");
+        element =
+            element +
+            `
       <div class="perguntas-container">
     <button class="collapsible">Pergunta ${i + 1}
       <ion-icon name="create-outline"></ion-icon></button>
@@ -50,13 +50,13 @@ function renderQuestionsPage() {
     <input onclick="validaçãoFormPerguntaQuizz()" class="botao-prosseguir-perguntas" type="submit" value="Prosseguir para criar níveis">
     </div>
       `;
-  }
+}
 
 let objetoQuestions = []
-let tituloDaPergunta =[]
+let tituloDaPergunta = []
 let colorDaPergunda = []
-let respCorreta =[]
-let urlRespCorreta =[]
+let respCorreta = []
+let urlRespCorreta = []
 let respIncorreta1 = []
 let urlRespIncorreta1 = []
 let respIncorreta2 = []
@@ -69,17 +69,17 @@ function validaçãoFormPerguntaQuizz() {
     for (let i = 0; i < numPerguntas; i++) {
         tituloDaPergunta[i] = tituloPergunta[i].value;
     }
-  
+
     let corDeFundo = document.querySelectorAll(".cor-de-fundo");
     for (let i = 0; i < numPerguntas; i++) {
-      colorDaPergunda[i]= corDeFundo[i].value;
+        colorDaPergunda[i] = corDeFundo[i].value;
     }
 
     let respostaCorreta = document.querySelectorAll(".resposta-correta");
     for (let i = 0; i < numPerguntas; i++) {
-      respCorreta[i] = respostaCorreta[i].value;
+        respCorreta[i] = respostaCorreta[i].value;
     }
-  
+
     let urlImagemRespostaCorreta = document.querySelectorAll(".url-imagem-resposta-correta");
     for (let i = 0; i < numPerguntas; i++) {
         urlRespCorreta[i] = urlImagemRespostaCorreta[i].value;
@@ -118,96 +118,97 @@ function validaçãoFormPerguntaQuizz() {
 
 
 
-    
+
+
     for (let i = 0; i < numPerguntas; i++) {
 
-    let duasPerguntasTRUE = respCorreta[i]!='' && respIncorreta1!='';
-    let tresPerguntasTrue= respCorreta[i]!='' && respIncorreta1!='' && respIncorreta2[i]!='';
-    let quatroPerguntasTRUE = respCorreta[i]!='' && respIncorreta1!='' && respIncorreta2[i]!='' && respIncorreta3[i]!='';
+        let duasPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '';
+        let tresPerguntasTrue = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '';
+        let quatroPerguntasTRUE = respCorreta[i] != '' && respIncorreta1 != '' && respIncorreta2[i] != '' && respIncorreta3[i] != '';
 
-    
-    if(quatroPerguntasTRUE){ //so tem duas respostas preenchidas
-        
-        objetoQuestions[i] = {
-            title:tituloDaPergunta[i],
-            color:colorDaPergunda[i],
-            answers:[
-              {
-                text:respCorreta[i],
-                image:urlRespCorreta[i],
-                isCorrectAnswer: true
-              },
-              {
-                text:respIncorreta1[i],
-                image:urlRespIncorreta1[i],
-                isCorrectAnswer:false
-              },
-              {
-                text:respIncorreta2[i],
-                image:urlRespIncorreta2[i],
-                isCorrectAnswer:false
-              },
-              {
-                text:respIncorreta3[i],
-                image:urlRespIncorreta3[i],
-                isCorrectAnswer:false
-              }
 
-            ]
-    
-          }
+        if (quatroPerguntasTRUE) { //so tem duas respostas preenchidas
+
+            objetoQuestions[i] = {
+                title: tituloDaPergunta[i],
+                color: colorDaPergunda[i],
+                answers: [
+                    {
+                        text: respCorreta[i],
+                        image: urlRespCorreta[i],
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: respIncorreta1[i],
+                        image: urlRespIncorreta1[i],
+                        isCorrectAnswer: false
+                    },
+                    {
+                        text: respIncorreta2[i],
+                        image: urlRespIncorreta2[i],
+                        isCorrectAnswer: false
+                    },
+                    {
+                        text: respIncorreta3[i],
+                        image: urlRespIncorreta3[i],
+                        isCorrectAnswer: false
+                    }
+
+                ]
+
+            }
+        }
+
+        else if (tresPerguntasTrue) { // so tem 3 preenchidas
+            console.log('3')
+            objetoQuestions[i] = {
+                title: tituloDaPergunta[i],
+                color: colorDaPergunda[i],
+                answers: [
+                    {
+                        text: respCorreta[i],
+                        image: urlRespCorreta[i],
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: respIncorreta1[i],
+                        image: urlRespIncorreta1[i],
+                        isCorrectAnswer: false
+                    },
+                    {
+                        text: respIncorreta2[i],
+                        image: urlRespIncorreta2[i],
+                        isCorrectAnswer: false
+                    }
+                ]
+
+            }
+        }
+        else if (duasPerguntasTRUE) { //todas as respostas estao preenchidas
+            console.log('2')
+            objetoQuestions[i] = {
+                title: tituloDaPergunta[i],
+                color: colorDaPergunda[i],
+                answers: [
+                    {
+                        text: respCorreta[i],
+                        image: urlRespCorreta[i],
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: respIncorreta1[i],
+                        image: urlRespIncorreta1[i],
+                        isCorrectAnswer: false
+                    }
+                ]
+
+            }
+        }
+
     }
 
-    else if(tresPerguntasTrue){ // so tem 3 preenchidas
-        console.log('3')
-        objetoQuestions[i] = {
-            title:tituloDaPergunta[i],
-            color:colorDaPergunda[i],
-            answers:[
-              {
-                text:respCorreta[i],
-                image:urlRespCorreta[i],
-                isCorrectAnswer: true
-              },
-              {
-                text:respIncorreta1[i],
-                image:urlRespIncorreta1[i],
-                isCorrectAnswer:false
-              },
-              {
-                text:respIncorreta2[i],
-                image:urlRespIncorreta2[i],
-                isCorrectAnswer:false
-              }
-            ]
-    
-          }
-    }
-    else if(duasPerguntasTRUE){ //todas as respostas estao preenchidas
-        console.log('2')
-        objetoQuestions[i] = {
-            title:tituloDaPergunta[i],
-            color:colorDaPergunda[i],
-            answers:[
-              {
-                text:respCorreta[i],
-                image:urlRespCorreta[i],
-                isCorrectAnswer: true
-              },
-              {
-                text:respIncorreta1[i],
-                image:urlRespIncorreta1[i],
-                isCorrectAnswer:false
-              }
-            ]
-    
-          }
-    }
-      
-    }
-    
     callRendezizarFormNivelQuizz()
-  }
+}
 
 
 
