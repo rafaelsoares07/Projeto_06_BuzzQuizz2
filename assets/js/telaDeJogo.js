@@ -119,6 +119,11 @@ function selectResposta(element) {
   }
   element.classList.remove("resposta-ja-clicada");
 
+  
+  setTimeout(()=>{
+    window.scrollTo(0, element.parentNode.scrollHeight)
+  },800)
+
 
   verificarGameOver()
 }
@@ -172,5 +177,11 @@ function verificarGameOver() {
       </div>
 
     </div>`
+
+
+    setTimeout(()=>{
+      window.scrollTo(0, document.body.scrollHeight)
+    },2000)
+    
   }
 }
