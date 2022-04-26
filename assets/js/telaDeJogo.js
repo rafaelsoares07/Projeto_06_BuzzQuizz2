@@ -120,15 +120,13 @@ function selectResposta(element) {
   element.classList.remove("resposta-ja-clicada");
 
   
-  setTimeout(()=>{
+  /*setTimeout(()=>{
     window.scrollTo(0, element.parentNode.scrollHeight)
-  },800)
+  },800)*/
 
 
   verificarGameOver()
 }
-
-
 
 
 function verificarGameOver() {
@@ -172,7 +170,7 @@ function verificarGameOver() {
       </div>
 
       <div class="comandos-tela-niveis">
-        <button>Reinciar</button>
+        <button onclick="reiniciar()">Reinciar</button>
         <a onclick="reload()">Voltar para menu</a>
       </div>
 
@@ -184,4 +182,31 @@ function verificarGameOver() {
     },2000)
     
   }
+}
+
+
+function reiniciar(){
+  setTimeout(()=>{
+    window.scrollTo(document.body.scrollHeight,0)
+  },2000)
+  
+  document.querySelector('.resultado-nivel-user').remove()
+  
+  document.querySelectorAll(".resposta-errada").forEach((el)=>{
+    el.classList.remove('resposta-errada')
+  })
+
+  document.querySelectorAll(".resposta-certa").forEach((el)=>{
+    el.classList.remove('resposta-certa')
+  })
+
+  document.querySelectorAll(".resposta-ja-clicada").forEach((el)=>{
+    el.classList.remove('resposta-ja-clicada')
+  })
+
+ 
+
+  contadorDeAcertos =0;
+  contadorTotal =0;
+
 }
