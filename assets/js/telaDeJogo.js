@@ -97,7 +97,6 @@ function selectResposta(element) {
   }
 
  
-  
   const cjPerguntas = element.parentNode;
   const clicou = cjPerguntas.querySelector(".resposta-ja-clicada");
   if (clicou === null) {
@@ -118,7 +117,15 @@ function selectResposta(element) {
     }
     element.classList.remove("resposta-ja-clicada");
 
-  
+
+verificarGameOver()
 }
 
+function verificarGameOver(){
+  if(document.querySelectorAll('.resposta-certa').length==tamPerguntas){
+    //renderizar a tela dos nivel do usuario naquele quizz
 
+    let container = document.querySelector("body");
+    container.innerHTML+='<h1 style="color:black; font-size:220px;">esse elemento foi chamado na funcao verificargame over</h1>'
+  }
+}
