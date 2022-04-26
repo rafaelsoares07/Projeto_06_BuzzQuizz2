@@ -243,7 +243,7 @@ padding-top:150px;
 /* CSS da TELA 3.1 (INFOS BASICAS)*/
 
 .form-create-quizz {
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     background-color: #faf6f6;
 

@@ -1,9 +1,9 @@
 @media (max-width:900px) {
 
-    h1 {
-       
-        width:50%;
+    header {
+        text-align: center;
     }
+
 
     .container-tudo {
         margin-left: 0px;;
@@ -118,8 +118,32 @@
     }
 
     .form-infos-basicas{
+        width: 100%;
         display: flex;
         flex-direction:column;
         align-items: center;
+    }
+
+    .form-infos-basicas input{
+        width: 95%;
+    }
+
+    .form-infos-basicas button{
+        width: 70%;
+    }
+
+    .infos-basicas{
+        width: 100%;
+    }
+
+    .form-info-niveis{
+        width: 100vw;
+    }
+    .form-niveis{
+        width: 80vw;
+    }
+ 
+    .container-niveis{
+        width: 100%;
     }
 }
