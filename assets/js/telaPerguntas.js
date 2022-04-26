@@ -115,7 +115,9 @@ function validaçãoFormPerguntaQuizz() {
         urlRespIncorreta3[i] = urlImagemRespostaIncorreta3[i].value;
     }
 
-    
+    //se as outtras variaveis do input tiverEM SEM NADA REDEZIRA UM ONBJETO COM APENAS AS 
+    //ANSWERS QUE ESTAO PREENCHIDAS
+    // (f 2)  (if 3) (if 4) e esse for debaixo diferente chamando a funcao callrenderizar niveis
 
     for (let i = 0; i < numPerguntas; i++) {
       objetoQuestions[i] = {

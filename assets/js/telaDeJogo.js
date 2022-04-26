@@ -1,4 +1,7 @@
-console.log('dasdasdasdas')
+function comparador(){
+  return Math.random() - 0.5;
+}
+
 let tituloAA;
 let imagem;
 let tamPerguntas;
@@ -44,34 +47,36 @@ function renderizarCabecalho(resp) {
 
 function renderizarContainerQuestions(resp) {
   let container = document.querySelector("body");
-
   tamPerguntas = resp.questions.length;
 
   for (let i = 0; i < tamPerguntas; i++) {
     tamRespostas = resp.questions[i].answers.length;
 
+    resp.questions[i].answers.sort(comparador)//misturar posicao de falso e verdadeiro
+
     for (let j = 0; j < tamRespostas; j++) {
         
-        elementoAA+= `<div resultado="${resp.questions[i].answers[j].isCorrectAnswer}" class ="caixa-unitaria">
-                    <img src="${resp.questions[i].answers[j].image}">
-                    <h4>${resp.questions[i].answers[j].text}</h4>
-                    </div>`
+        elementoAA+= `
+        <div resultado="${resp.questions[i].answers[j].isCorrectAnswer}" class ="caixa-unitaria">
+          <img src="${resp.questions[i].answers[j].image}">
+          <h4>${resp.questions[i].answers[j].text}</h4>
+        </div>`
     }
-    elementoFinal = 
-    `<div style="border: 1px solid green;" class="caixa-pergunta">
-    
-    <h3 style="background-color:${resp.questions[i].color};">${resp.questions[i].title}</h3>
-    <div class="caixa-flex">
-    ${elementoAA}
-    </div>
 
+    elementoFinal = 
+    `<div class="caixa-pergunta">
+      <h3 style="background-color:${resp.questions[i].color};">
+      ${resp.questions[i].title}
+      </h3>
+      <div class="caixa-flex">
+        ${elementoAA}
+      </div>
     </div>`
 
     container.innerHTML+= elementoFinal
     
     elementoAA=''
   }
-
   
 }
 
